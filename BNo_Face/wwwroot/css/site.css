@@ -1,0 +1,35 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+nav {
+    width: 150px;
+    background-color: #fff;
+    
+}
+nav ul {
+    width: 150px;
+}
+nav ul li {
+    margin: 5px;
+    padding: 5px;
+    list-style: none;
+    font-weight: bold;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}

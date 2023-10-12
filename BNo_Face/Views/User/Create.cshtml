@@ -1,0 +1,50 @@
+﻿@model User
+
+<form method="post">
+	<div class="border p-3">
+		<div class="row pb-2">
+			<h2>Hi</h2>
+		</div>
+		<!--<div asp-validation-summary="All" class="text-danger"></div>-->
+		<div class="mb-3">
+			<label asp-for="UserName"></label>
+			<input asp-for="UserName" class="form-control" />
+			<span asp-validation-for="UserName" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Password"></label>
+			<input asp-for="Password" class="form-control" />
+			<span asp-validation-for="Password" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Birthday"></label>
+			<input asp-for="Birthday" class="form-control" />
+			<span asp-validation-for="Birthday" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<!--
+			Regular space: &nbsp;
+			Two spaces gap: &ensp;
+			Four spaces gap: &emsp;
+						-->
+			<label asp-for="Sex"></label>&emsp;&emsp;
+			<input type="radio" name="Sex" value="1" /> Nam &ensp;
+			<input type="radio" name="Sex" value="0" /> Nữ
+			<span asp-validation-for="Sex" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="NumberPhone"></label>
+			<input asp-for="NumberPhone" class="form-control" />
+			<span asp-validation-for="NumberPhone" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Position"></label>
+			<input asp-for="Position" class="form-control" />
+			<span asp-validation-for="Position" class="text-danger"></span>
+		</div>
+		
+		
+		<button type="submit" class="btn btn-primary">Submit</button>
+		<a asp-controller="Category" asp-action="Index">Back to home </a>
+	</div>
+</form>
