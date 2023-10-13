@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Category>
+<div class="container">
+	<div class="row pt-4">
+		<div class="col-1">
+			<h2> Danh Mục </h2>
+		</div>
+		<div class="col-1">
+
+			<a asp-controller="Category" asp-action="Create" class="btn btn-primary">Thêm Danh Mục</a>
+		</div>
+	</div>
+
+	<table class="table_user">
+		<thead>
+			<tr>
+				<th> ID</th>
+				<th> Tên</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.CategoryID</td>
+					<td>@item.CategoryName</td>
+					<td>
+						<div>
+							<a class="btn btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">
+								Sửa
+							</a>
+						</div>
+					</td>
+					<td>
+						<div>
+							<a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@item.CategoryID">
+								Xóa
+							</a>
+
+						</div>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
