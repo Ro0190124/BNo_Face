@@ -1,12 +1,76 @@
 ﻿@model IEnumerable<User>
-<div class="container p-3">
+
+<div class="container">
 	<div class="row pt-4">
-		<div class="col-6">
+		<div class="col-1">
 			<h2> User </h2>
 		</div>
-		<div class="col-6">
+		<div class="col-1">
 
 			<a asp-controller="User" asp-action="Create" class="btn btn-primary">Create</a>
 		</div>
 	</div>
+
+	<table class="table_user">
+		<thead>
+			<tr>
+			<th> Tên Tài Khoản</th>
+			<th> Mật Khẩu</th>
+			<th> Họ Tên</th>
+			<th> Ngày Sinh</th>
+			<th> Giới Tính</th>
+			<th> Số Điện Thoại</th>
+			<th> Chức Vụ</th>
+			<th> Ngày Tạo</th>
+			<th> Sửa</th>
+			<th> Xóa</th>
+		</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				string sex = "Nữ";
+				@if (item.Sex == true)
+				{
+					sex = "Nam";
+				}
+				string position = "Nhân Viên";
+				@if (item.Position == 1 )
+				{
+					position = "Quản Lý";
+				}
+				
+				@if(item.Position == 2)
+				{
+					position = "Kế Toán";
+				}
+				<tr>
+					<td>@item.UserName</td>
+					<td>@item.Password</td>
+					<td>@item.Name</td>
+					<td>@item.Birthday</td>
+					<td>@sex</td>
+					<td>@item.NumberPhone</td>
+					<td>@position</td>
+					<td>@item.DateOfAccount</td>
+					<td>
+						<div>
+							<a class="btn btn-primary" asp-controller="User" asp-action="Edit" asp-route-id="@item.UserID">
+								
+								Sửa
+							</a>
+						</div>
+					</td>
+					<td>
+						<div>
+							<a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.UserID">
+							Xóa
+							</a>
+							
+						</div>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </div>

@@ -14,25 +14,29 @@ namespace BNo_Face.Model
 		public int UserID { get; set; }
 		[MaxLength(50)]
 		[MinLength (1)]
-		[Display(Name = "Full Name")]
+		[Display(Name = "Họ Tên")]
 		public string Name { get; set; }
+		[Display(Name = "Ngày Sinh")]
 		public DateTime Birthday { get; set; }
+		[Display(Name = "Giới Tính")]
 		public bool Sex { get; set; }
 		
 		[StringLength(10)]
-		[Display(Name = "Number Phone")]
+		[Display(Name = "SĐT")]
 		public string NumberPhone { get; set; }
 		
 		[Required]
 		[MinLength(5)]
 		[MaxLength(40)]
-		[Display(Name = "User Name")]
+		[Display(Name = "Tên Tài Khoản")]
 		public string UserName { get; set; }
 		[Required]
 		[MinLength(5)]
 		[MaxLength(30)]
+		[Display(Name = "Mật Khẩu")]
 		public string Password { get; set; }
 		[Required]
+		[Display(Name = "Chức Vụ")]
 		public byte Position { get; set; }
 
 		// ngày lập tài khoản

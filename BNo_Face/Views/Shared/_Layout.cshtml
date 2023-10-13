@@ -11,15 +11,22 @@
 <body>
 
 	<header>
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BNo_Face</a>
+        <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="Index">BNo_Face</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 		<nav>
+            
 			<ul>
-                <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Privacy</a></li>
+               
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Nhân Viên</a></li>
+				<li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Sản Phẩm</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Danh Mục</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Hóa Đơn</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Thống Kê</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Phiếu Chi</a></li>
+
 			</ul>
 			
         </nav>
@@ -29,15 +36,5 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - BNo_Face - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
