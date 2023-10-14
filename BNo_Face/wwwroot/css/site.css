@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  background-color: grey;
 }
 
 @media (min-width: 768px) {
@@ -21,8 +22,8 @@ body {
     justify-content: space-between;
 }
 header {
-    flex:1;
-
+    background-color: grey;
+    flex: 1;
 }
 nav {
     width: 300px;
@@ -49,6 +50,7 @@ nav ul li {
     background-color: #fff;
 }
 .container {
+    background-color: grey;
     width: 1497px;
     height: 1083px;
     margin-left: 50px;

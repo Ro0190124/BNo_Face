@@ -8,21 +8,20 @@ using System.Threading.Tasks;
 
 namespace BNo_Face.Model
 {
-	public class Bill
+	public class Payment
 	{
 		[Key]
-		public int BillID { get; set; }
-		
+		public int PaymentID { get; set; }
 		public int UserID { get; set; }
 		[ForeignKey("UserID")]
 		public User User { get; set; }
-		public int ProductID { get; set; }
-		[ForeignKey("ProductID")]
-		public Product Product { get; set; }
+		[MaxLength(80)]
+		public string Note { get; set; }
 		[Required]
-		public int Quantity { get; set; }
+		[MaxLength(100)]
+		public string Content { get; set; }
 		[Required]
 		public int TotalPrice { get; set; }
-		public DateTime DateOfBill { get; private set; } = DateTime.Now;
+		public DateTime DateOfPayment { get; private set; } = DateTime.Now;
 	}
 }

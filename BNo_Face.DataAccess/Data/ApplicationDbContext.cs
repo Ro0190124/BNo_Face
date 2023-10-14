@@ -16,5 +16,7 @@ namespace BNo_Face.DataAccess.Data
 		public DbSet<User> Users { get; set; }
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<Product> Products { get; set; }
+		public DbSet<Bill> Bills { get; set; }
+		public DbSet<Payment> Payments { get; set; }
 	}
 }
