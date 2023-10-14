@@ -11,10 +11,16 @@ namespace BNo_Face.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Index()
+		public IActionResult Index(string searchString)
 		{
-			IEnumerable<Category> userlist = _db.Categories.ToList();
-			return View(userlist);
+			var categorys = from u in _db.Categories // lấy toàn bộ liên kết
+						select u;
+
+			if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+			{
+				categorys = categorys.Where(c=> c.CategoryName.Contains(searchString) ); //lọc theo chuỗi tìm kiếm
+			}
+			return View(categorys);
 		}
 		public IActionResult Create()
 		{
@@ -27,17 +33,12 @@ namespace BNo_Face.Controllers
 		
 			if (ModelState.IsValid)
 			{
-				Console.WriteLine("Create user");
+				
 				_db.Categories.Add(category);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
 
 			}
-			else
-			{
-				Console.WriteLine("Create user fail");
-			}
-
 			return View(category);
 		}
 		public IActionResult Edit(int? ID)
@@ -57,31 +58,15 @@ namespace BNo_Face.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(Category category)
 		{
-			//Console.WriteLine("t vo r ma dm");
-			//lấy chuỗi số sau dấu / trong url
-			String? idString = HttpContext.Request.Path.Value?.Split("/").Last();
-			Console.WriteLine("sao??"+idString);
-			if (!int.TryParse(idString, out int ID))
-			{
-				return View();
-			}
-			/*if (ID != category.CategoryID)
-			{
-				return NotFound();
-			}*/
-			//Console.WriteLine("Lưu đc ch");
 			if (ModelState.IsValid)
 			{
-				var categoryFromDb = _db.Categories.Find(ID);
-				categoryFromDb.CategoryName = category.CategoryName;
-				_db.Categories.Update(categoryFromDb);
+				_db.Categories.Update(category);
 				_db.SaveChanges();
-				//TempData["Message"] = "Category updated successfully";
-				//Console.WriteLine("Lưu đc r");
 				return RedirectToAction("Index");
 			}
-			
 			return View(category);
+
+			
 		}
 		public IActionResult Delete(int? ID)
 		{
@@ -100,25 +85,18 @@ namespace BNo_Face.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult Delete(Category category)
-		{
-
-			//lấy chuỗi số sau dấu / trong url
-			String? idString = HttpContext.Request.Path.Value?.Split("/").Last();
-			if (!int.TryParse(idString, out int ID))
-			{
-				return View();
-			}
-
+		{	
+			
 			if (ModelState.IsValid)
 			{
-				//Console.WriteLine("HI");
-				var categoryFromDb = _db.Categories.Find(ID);
-
-				_db.Categories.Remove(categoryFromDb);
+				_db.Categories.Remove(category);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			return View("Index");
+			
+			return View(category);
+
+			
 		}
 
 	}

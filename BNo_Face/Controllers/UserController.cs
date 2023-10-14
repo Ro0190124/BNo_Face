@@ -1,6 +1,8 @@
 ﻿using BNo_Face.DataAccess.Data;
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace BNo_Face.Controllers
@@ -13,11 +15,21 @@ namespace BNo_Face.Controllers
 		{
 			_db = db;
 		}
-		public IActionResult Index()
+		//tìm kiếm
+		public IActionResult Index(string searchString)
 		{
-			IEnumerable<User> userlist = _db.Users.ToList();
-			return View(userlist);
+			/*IEnumerable<User> userlist = _db.Users.ToList();
+			return View(userlist);*/
+			var users = from u in _db.Users // lấy toàn bộ liên kết
+						select u;
+
+			if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+			{
+				users = users.Where(s => s.UserName.Contains(searchString) || s.NumberPhone.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+			}
+			return View(users);
 		}
+		//tạo
 		public IActionResult Create()
 		{
 			return View();
@@ -38,13 +50,10 @@ namespace BNo_Face.Controllers
 				return RedirectToAction("Index");
 
 			}
-			else
-			{
-				Console.WriteLine("Create user fail");
-			}
 			
 			return View(user);
 		}
+		//sửa
 		public IActionResult Edit(int? ID)
 		{
 
@@ -63,35 +72,18 @@ namespace BNo_Face.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(User user)
 		{
-			Console.WriteLine("t vo r ma dm");
-			//lấy chuỗi số sau dấu / trong url
-			String? idString = HttpContext.Request.Path.Value?.Split("/").Last();
-			if (!int.TryParse(idString, out int ID))
-			{
-				return View();
-			}
-			if (user.UserName == user.Password)
-			{
-				ModelState.AddModelError("UserName", "Tên và mật khẩu không được trùng"); 
-			}
-			
 			if (ModelState.IsValid)
 			{
-				Console.WriteLine("HI");
-				var userFromDb = _db.Users.Find(ID);
-				userFromDb.UserName = user.UserName;
-				userFromDb.Password = user.Password;
-				userFromDb.Name = user.Name;
-				userFromDb.NumberPhone = user.NumberPhone;
-				userFromDb.Sex = user.Sex;
-				userFromDb.Position = user.Position;
-				_db.Users.Update(userFromDb);
+				Console.WriteLine("Edit user");
+				_db.Users.Update(user);
 				_db.SaveChanges();
-				//TempData["Message"] = "Category updated successfully";
 				return RedirectToAction("Index");
+
 			}
 			return View(user);
+			
 		}
+		//xóa
 		public IActionResult Delete(int? ID)
 		{
 
@@ -110,24 +102,17 @@ namespace BNo_Face.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Delete(User user)
 		{
-
-			//lấy chuỗi số sau dấu / trong url
-			String? idString = HttpContext.Request.Path.Value?.Split("/").Last();
-			if (!int.TryParse(idString, out int ID))
-			{
-				return View();
-			}
-
 			if (ModelState.IsValid)
 			{
-				Console.WriteLine("HI");
-				var userFromDb = _db.Users.Find(ID);
-				
-				_db.Users.Remove(userFromDb);
+				Console.WriteLine("Delete user");
+				_db.Users.Remove(user);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			return View("Index");
+			return View(user);
+		
 		}
+		
+
 	}
 }

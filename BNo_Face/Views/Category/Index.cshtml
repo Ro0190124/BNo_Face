@@ -9,6 +9,17 @@
 			<a asp-controller="Category" asp-action="Create" class="btn btn-primary">Thêm Danh Mục</a>
 		</div>
 	</div>
+	@using (Html.BeginForm())
+
+	{
+
+		<p>
+
+			Nhập thông tin: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm"  />
+
+		</p>
+
+	}
 
 	<table class="table_user">
 		<thead>
