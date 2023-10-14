@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace BNo_Face.Model
+{
+    public class Product
+    {
+
+        [Key]
+        [Display(Name = "Product ID")]
+        public int ProductID { get; set; }
+        [Required]
+        [MinLength(1)]
+        [MaxLength(100)]
+        [Display(Name = "Product Name")]
+        public string ProductName { get; set; }
+        [Required]
+        [Display(Name = "Status")]
+        public bool Status { get; set; }
+        [Required]
+        [Display(Name = "Quantity")]
+        public int Quantity { get; set; }
+        [Required]
+        [MaxLength(5)]
+        [Display(Name = "Size")]
+        public string Size { get; set; }
+        [Required]
+        [MaxLength(20)]
+        [Display(Name = "Color")]
+        public string Color { get; set; }
+        [Display(Name = "Price")]
+        [Required]
+        public string Price { get; set; }
+        [Display(Name = "Note")]
+        [MaxLength(80)]
+        public string Note { get; set; }
+        [Required]
+        public int CategoryID { get; set; }
+
+    }
+}

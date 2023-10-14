@@ -1,6 +1,7 @@
 ﻿using BNo_Face.DataAccess.Data;
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
+using BNo_Face.DataAccess;
 
 namespace BNo_Face.Controllers
 {
@@ -55,35 +56,58 @@ namespace BNo_Face.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Edit(Category category)
+		public IActionResult Edit(Category obj)
 		{
-			//Console.WriteLine("t vo r ma dm");
-			//lấy chuỗi số sau dấu / trong url
-			String? idString = HttpContext.Request.Path.Value?.Split("/").Last();
-			Console.WriteLine("sao??"+idString);
-			if (!int.TryParse(idString, out int ID))
-			{
-				return View();
-			}
-			/*if (ID != category.CategoryID)
-			{
-				return NotFound();
-			}*/
-			//Console.WriteLine("Lưu đc ch");
-			if (ModelState.IsValid)
-			{
-				var categoryFromDb = _db.Categories.Find(ID);
-				categoryFromDb.CategoryName = category.CategoryName;
-				_db.Categories.Update(categoryFromDb);
-				_db.SaveChanges();
-				//TempData["Message"] = "Category updated successfully";
-				//Console.WriteLine("Lưu đc r");
-				return RedirectToAction("Index");
-			}
-			
-			return View(category);
-		}
-		public IActionResult Delete(int? ID)
+            //code binh thuong
+            if (ModelState.IsValid)
+            {
+                var existingCategory = _db.Categories.FirstOrDefault(c => c.CategoryID == obj.CategoryID);
+                if (existingCategory != null)
+                {
+                    existingCategory.CategoryName = obj.CategoryName;
+                    // Cập nhật các thuộc tính khác của category tương ứng
+                    _db.SaveChanges();
+                    TempData["Success"] = "Sửa category thành công!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Không tìm thấy danh mục để sửa.");
+                }
+            }
+
+            Console.WriteLine(obj.CategoryID);
+            Console.WriteLine("Ua la tra ve cai j??" + obj.CategoryID + "   " + obj.CategoryName);
+            return View(obj);
+
+
+            ////Console.WriteLine("t vo r ma dm");
+            ////lấy chuỗi số sau dấu / trong url
+            //String? idString = HttpContext.Request.Path.Value?.Split("/").Last();
+            //Console.WriteLine("sao??"+idString);
+            //if (!int.TryParse(idString, out int ID))
+            //{
+            //	return View();
+            //}
+            ///*if (ID != category.CategoryID)
+            //{
+            //	return NotFound();
+            //}*/
+            ////Console.WriteLine("Lưu đc ch");
+            //if (ModelState.IsValid)
+            //{
+            //	var categoryFromDb = _db.Categories.Find(ID);
+            //	categoryFromDb.CategoryName = category.CategoryName;
+            //	_db.Categories.Update(categoryFromDb);
+            //	_db.SaveChanges();
+            //	//TempData["Message"] = "Category updated successfully";
+            //	//Console.WriteLine("Lưu đc r");
+            //	return RedirectToAction("Index");
+            //}
+
+            //return View(category);
+        }
+        public IActionResult Delete(int? ID)
 		{
 
 			if (ID == null || ID == 0)

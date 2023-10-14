@@ -1,7 +1,7 @@
 ﻿@model Category
 
 
-<form method="post" asp-action="Edit"  class="SignIn">
+@*<form method="post" asp-action="Edit"  class="SignIn">
 	<div class="border p-3">
 		<div class="row pb-2">
 			<h2>Danh Mục</h2>
@@ -15,4 +15,20 @@
 		<button type="submit" class="btn btn-primary">Sửa</button>
 		<a asp-controller="Category" asp-action="Index">Trở về </a>
 	</div>
+</form>*@
+
+<form method="post" asp-action="Edit" class="SignIn">
+    <div class="border p-3">
+        <div class="row pb-2">
+            <h2>Danh Mục</h2>
+        </div>
+        <div class="mb-3">
+            <input type="hidden" asp-for="CategoryID" /> <!-- Thêm trường ẩn để truyền CategoryID -->
+            <label asp-for="CategoryName" class="title_block"></label>
+            <input asp-for="CategoryName" class="textbox" /> <br />
+            <span asp-validation-for="CategoryName" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Sửa</button>
+        <a asp-controller="Category" asp-action="Index">Trở về </a>
+    </div>
 </form>
