@@ -20,10 +20,4 @@
     <ProjectReference Include="..\BNo_Face.Model\BNo_Face.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Bill\" />
-    <Folder Include="Views\Payment\" />
-    <Folder Include="Views\Product\" />
-  </ItemGroup>
-
 </Project>
