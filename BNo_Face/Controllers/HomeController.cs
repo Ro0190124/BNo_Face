@@ -13,30 +13,36 @@ namespace BNo_Face.Controllers
 		}
 		public IActionResult Index()
 		{
-			return View();
+            ViewData["HideHeader"] = true;
+            return View();
 		}
 		public IActionResult Loggin(string userName, string password)
 		{
+			// dòng này đặt ở controller trang nào thì _layout sẽ ẩn đi ở trang đó
+			ViewData["HideHeader"] = true;
 			var user = _db.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
 			if (user != null)
 			{
 				return RedirectToAction("Home", "Home");
-			}
+            }
 			return View();
 		}
 		public IActionResult Home()
 		{
-			return View();
+            ViewData["HideHeader"] = true;
+            return View();
 		}
 		public IActionResult SignIn()
 		{
-			return View();
+            ViewData["HideHeader"] = true;
+            return View();
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult SignIn(User user)
 		{
-			if (user.UserName == user.Password)
+            ViewData["HideHeader"] = true;
+            if (user.UserName == user.Password)
 			{
 				ModelState.AddModelError("UserName", "Tên và mật khẩu không được trùng");
 			}

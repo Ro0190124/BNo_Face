@@ -79,8 +79,29 @@ nav ul li {
 }
 .table_user th{
     width: 20px;
+    background-color: #f2f2f2;
 }
 .table_user{
     width: 1200px;
-   
+   border-collapse:collapse;
 }
+
+/*table user*/
+.Tb-container {
+    max-width: 1200px;
+    overflow-x: auto;
+    margin: 0 auto;
+}
+
+    .table_user th,
+    .table_user td {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border:1px solid black;
+    }
+/*        .table_user td:hover {
+            overflow: visible;
+            white-space: normal;
+        }*/

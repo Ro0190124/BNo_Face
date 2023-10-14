@@ -9,8 +9,41 @@
     <link rel="stylesheet" href="~/BNo_Face.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
-	
+
+    @{
+        // Sử dụng giá trị của biến ViewData
+        bool hideHeader = ViewData["HideHeader"] as bool? ?? false;
+
+        // Hoặc sử dụng giá trị của biến ViewBag
+        // bool hideHeader = ViewBag.HideHeader as bool? ?? false;
+    }
+
+    @if (!hideHeader)
+    {
+
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+
+        <header>
+            <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="Index">BNo_Face</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+		<nav>
+            
+			<ul>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Nhân Viên</a></li>
+				<li><a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Sản Phẩm</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Danh Mục</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Bill" asp-action="Index">Hóa Đơn</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Thống Kê</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Payment" asp-action="Index">Phiếu Chi</a></li>
+
+			</ul>
+			
+        </nav>
+    </header>
+    }
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
