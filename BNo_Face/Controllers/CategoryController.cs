@@ -57,7 +57,7 @@ namespace BNo_Face.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Edit(Category obj)
+		public IActionResult Edit(Category category)
 		{
 			if (ModelState.IsValid)
 			{
