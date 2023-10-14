@@ -1,6 +1,7 @@
 ﻿using BNo_Face.DataAccess.Data;
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
+using BNo_Face.DataAccess;
 
 namespace BNo_Face.Controllers
 {
@@ -56,7 +57,7 @@ namespace BNo_Face.Controllers
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Edit(Category category)
+		public IActionResult Edit(Category obj)
 		{
 			if (ModelState.IsValid)
 			{
