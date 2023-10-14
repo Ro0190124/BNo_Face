@@ -22,7 +22,8 @@
 		</p>
 
 	}
-	<table class="table_user">
+	<div class="Tb-Container">
+	<table class="table_user responsive-table">
 		<thead>
 			<tr>
 			<th> Tên Tài Khoản</th>
@@ -59,11 +60,11 @@
 					<td>@item.UserName</td>
 					<td>@item.Password</td>
 					<td>@item.Name</td>
-					<td>@item.Birthday</td>
+						<td>@item.Birthday.ToShortDateString()</td>
 					<td>@sex</td>
 					<td>@item.NumberPhone</td>
 					<td>@position</td>
-					<td>@item.DateOfAccount</td>
+						<td>@item.DateOfAccount.ToShortDateString()</td>
 					<td>
 						<div>
 							<a class="btn btn-primary" asp-controller="User" asp-action="Edit" asp-route-id="@item.UserID">
@@ -83,4 +84,5 @@
 			}
 		</tbody>
 	</table>
+	</div>
 </div>
