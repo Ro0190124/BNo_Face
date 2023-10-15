@@ -1,6 +1,7 @@
 ﻿using BNo_Face.DataAccess.Data;
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BNo_Face.Controllers
 {
@@ -24,22 +25,46 @@ namespace BNo_Face.Controllers
 		}
 		public IActionResult Create()
 		{
+			//Product product = new Product();
+			IEnumerable<SelectListItem> categoryList = _db.Categories.Select(
+				u => new SelectListItem()
+				{
+
+					Text = u.CategoryName,
+					Value = u.CategoryID.ToString()
+				}
+				).ToList();
+			ViewBag.CategoryList = categoryList;
 			return View();
 		}
+			
+		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult Create(Product product)
 		{
-
+		
 			if (ModelState.IsValid)
 			{
-
+				Console.WriteLine(product.CategoryID);
 				_db.Products.Add(product);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
-
+				
 			}
-			return View(product);
+			else
+			{
+				IEnumerable<SelectListItem> categoryList = _db.Categories.Select(
+			u => new SelectListItem()
+			{
+
+				Text = u.CategoryName,
+				Value = u.CategoryID.ToString()
+			}
+			).ToList();
+				ViewBag.CategoryList = categoryList;
+				return View(product);
+			}
 		}
 
 		public IActionResult Edit(int? ID)

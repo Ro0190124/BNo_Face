@@ -1,1 +1,74 @@
 ﻿@model IEnumerable<Product>
+
+<div class="container">
+	<div class="row pt-4">
+		<div class="col-1">
+			<h2> User </h2>
+		</div>
+		<div class="col-1">
+
+			<a asp-controller="Product" asp-action="Create" class="btn btn-primary">Thêm Sản Phẩm</a>
+			<br />
+		</div>
+	</div>
+	@using (Html.BeginForm())
+
+	{
+
+		<p>
+
+			Nhập thông tin: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+
+		</p>
+
+	}
+	<div class="Tb-Container">
+		<table class="table_user responsive-table">
+			<thead>
+				<tr>
+					<th> Tên Sản Phẩm</th>
+					<th> Phân Loại</th>
+					<th> Màu Sắc</th>
+					<th> Size</th>
+					<th> Trạng thái</th>
+					<th> Số Lượng</th>
+					<th> Giá</th>
+					<th> Ghi Chú</th>
+					<th> Sửa</th>
+					<th> Xóa</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					
+					<tr>
+						<td>@item.ProductName</td>
+						<td>@item.ProductID</td>
+						<td>@item.Color</td>
+						<td>@item.Size</td>
+						<td>@item.Status</td>
+						<td>@item.Quantity</td>
+						<td>@item.Price</td>
+						<td>@item.Note</td>
+						<td>
+							<div>
+								<a class="btn btn-primary" asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductID">
+									Sửa
+								</a>
+							</div>
+						</td>
+						<td>
+							<div>
+								<a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@item.ProductID">
+									Xóa
+								</a>
+
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -12,6 +12,14 @@
 				<input asp-for="BillID" class="textbox" /> <br />
 				<span asp-validation-for="BillID" class="text-danger"></span>
 			</div>
+			<div class="mb-3">
+				<label asp-for="ProductID" class="title_block"></label>
+				<select asp-for="BillID" asp-items="ViewBag.productList" class="form-select" />
+				<option disabled onselect="" > -- Select Product</option>
+				<span asp-validation-for="BillID" class="text-danger"></span>
+			</div>
+
+
 			<button type="submit" class="btn btn-primary">Tạo Danh Mục</button>
 			<a asp-controller="Category" asp-action="Index">Trở về </a>
 		</div>
