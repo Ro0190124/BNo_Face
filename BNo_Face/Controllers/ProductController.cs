@@ -2,6 +2,7 @@
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace BNo_Face.Controllers
 {
@@ -11,30 +12,40 @@ namespace BNo_Face.Controllers
 		public ProductController(ApplicationDbContext db)
 		{
 			_db = db;
+			_db.Products.Include(u => u.Category);
 		}
-		public IActionResult Index(string searchString)
+		public void LoadCategory()
 		{
-			var products = from u in _db.Products // lấy toàn bộ liên kết
-						   select u;
-
-			if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
-			{
-				products = products.Where(c => c.ProductName.Contains(searchString) || c.Price.ToString().Contains(searchString)); //lọc theo chuỗi tìm kiếm
-			}
-			return View(products);
-		}
-		public IActionResult Create()
-		{
-			//Product product = new Product();
+			//ViewBag.CategoryID = new SelectList(_db.Categories, "CategoryID", "CategoryName");
 			IEnumerable<SelectListItem> categoryList = _db.Categories.Select(
 				u => new SelectListItem()
 				{
-
 					Text = u.CategoryName,
 					Value = u.CategoryID.ToString()
 				}
 				).ToList();
 			ViewBag.CategoryList = categoryList;
+		
+
+		}
+		public IActionResult Index(string searchString)
+		{
+			//show the list of products with Name of category
+			
+			var products = _db.Products.Include(u => u.Category).ToList();
+			//searching
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				products = products.Where(u => u.ProductName.ToLower().Contains(searchString.ToLower())).ToList();
+			}
+			
+			return View(products);
+		}
+		
+		public IActionResult Create()
+		{
+			
+			LoadCategory();
 			return View();
 		}
 			
@@ -43,7 +54,8 @@ namespace BNo_Face.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Create(Product product)
 		{
-		
+			
+
 			if (ModelState.IsValid)
 			{
 				Console.WriteLine(product.CategoryID);
@@ -54,21 +66,14 @@ namespace BNo_Face.Controllers
 			}
 			else
 			{
-				IEnumerable<SelectListItem> categoryList = _db.Categories.Select(
-			u => new SelectListItem()
-			{
-
-				Text = u.CategoryName,
-				Value = u.CategoryID.ToString()
-			}
-			).ToList();
-				ViewBag.CategoryList = categoryList;
+				LoadCategory();
 				return View(product);
 			}
 		}
 
 		public IActionResult Edit(int? ID)
 		{
+			LoadCategory();
 			if (ID == null || ID == 0)
 			{
 				return NotFound();
@@ -84,6 +89,7 @@ namespace BNo_Face.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(Product product)
 		{
+			LoadCategory();
 			if (ModelState.IsValid)
 			{
 				_db.Products.Update(product);

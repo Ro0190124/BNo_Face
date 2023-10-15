@@ -23,7 +23,7 @@ namespace BNo_Face.Controllers
 			var user = _db.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
 			if (user != null)
 			{
-				return RedirectToAction("Home", "Home");
+				return RedirectToAction("Index", "Product");
             }
 			return View();
 		}

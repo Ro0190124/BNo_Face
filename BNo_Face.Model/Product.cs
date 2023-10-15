@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -37,12 +38,15 @@ namespace BNo_Face.Model
         public string Color { get; set; }
         [Display(Name = "Giá")]
         [Required]
+
         public string Price { get; set; }
         [Display(Name = "Ghi Chú")]
         [MaxLength(80)]
         public string Note { get; set; }
         [Required]
+		
 		public int CategoryID { get; set; }
+        [ValidateNever]
 		[ForeignKey("CategoryID")]
 		public Category Category { get; set; }
 

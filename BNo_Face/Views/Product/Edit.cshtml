@@ -1,5 +1,67 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Product
+
+
+<div class="container">
+	<form method="post" asp-action="Edit" >
+		<div class="border p-3">
+			<div class="row pb-2">
+				<h2>Sửa Sản Phẩm</h2>
+			</div>
+			<div class="mb-3">
+				<input type="hidden" asp-for="ProductID" />
+			</div>
+			<!--<div asp-validation-summary="All" class="text-danger"></div>-->
+			<div class="mb-3">
+				<label asp-for="ProductName" class="title_block"></label>
+				<input asp-for="ProductName" class="textbox" /> <br />
+				<span asp-validation-for="ProductName" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="CategoryID" class="title_block"></label>
+				@*@Html.DropDownList("category", ViewBag.categoryList as SelectList, new { @class = "form-select" })*@
+
+				<select asp-for="CategoryID" asp-items="ViewBag.categoryList" class="form-select">
+					@*<option disabled onselect="">--Chọn--</option>*@
+				</select>
+
+				<span asp-validation-for="CategoryID" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Color" class="title_block"></label>
+				<input asp-for="Color" class="textbox" /> <br />
+				<span asp-validation-for="Color" class="text-danger"></span>
+			</div>
+
+			<div class="mb-3">
+				<label asp-for="Size" class="title_block"></label>
+				<input asp-for="Size" class="textbox" /> <br />
+				<span asp-validation-for="Size" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Quantity" class="title_block"></label>
+				<input asp-for="Quantity" class="textbox" /> <br />
+				<span asp-validation-for="Quantity" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Price" class="title_block"></label>
+				<input asp-for="Price" class="textbox" /> <br />
+				<span asp-validation-for="Price" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Note" class="title_block"></label>
+				<input asp-for="Note" class="textbox" /> <br />
+				<span asp-validation-for="Note" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Status" class="title_block"></label>
+				<input type="radio" name="Status" value="true" /> Còn &ensp;
+				<input type="radio" name="Status" value="false" /> Hết &ensp;
+				<span asp-validation-for="Status" class="text-danger"></span>
+			</div>
+
+
+			<button type="submit" class="btn btn-primary">Sửa</button>
+			<a asp-controller="Product" asp-action="Index"> Trở về </a>
+		</div>
+	</form>
+</div>
