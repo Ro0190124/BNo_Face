@@ -105,7 +105,8 @@ namespace BNo_Face.Controllers
 			{
 				return NotFound();
 			}
-			var s = _db.Products.FirstOrDefault(u => u.ProductID == ID);
+			//var s = _db.Products.FirstOrDefault(u => u.ProductID == ID);
+			var s = _db.Products.Include(p => p.Category).FirstOrDefault(u => u.ProductID == ID);
 			if (s == null)
 			{
 				return NotFound();

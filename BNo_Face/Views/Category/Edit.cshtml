@@ -31,7 +31,15 @@
             <input asp-for="CategoryName" class="textbox" /> <br />
             <span asp-validation-for="CategoryName" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">Sửa</button>
+        <button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
         <a asp-controller="Category" asp-action="Index">Trở về </a>
     </div>
 </form>
+
+<script>
+    function confirmEdit() {
+        if (confirm("Bạn có muốn sửa không?")) {
+            document.querySelector('.SignIn').submit();
+        }
+    }
+</script>

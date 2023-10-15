@@ -9,10 +9,23 @@
 		<input type="hidden" asp-for="CategoryID" />
 		<div class="mb-3">
 			<label asp-for="CategoryName" class="title_block"></label>
-			<input asp-for="CategoryName" class="textbox" /> <br />
+			<input asp-for="CategoryName" type="hidden" /> <br />
+            <span class="textbox" >@Model.CategoryName</span>
 			<span asp-validation-for="CategoryName" class="text-danger"></span>
 		</div>
-		<button type="submit" class="btn btn-primary">Xóa</button>
+         <button type="button" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
+		@*<button type="submit" class="btn btn-primary">Xóa</button>*@
 		<a asp-controller="Category" asp-action="Index">Trở về </a>
 	</div>
 </form>
+
+
+
+
+<script>
+    function confirmDelete() {
+        if (confirm("Bạn có muốn xóa không?")) {
+            document.querySelector('.SignIn').submit();
+        }
+    }
+</script>

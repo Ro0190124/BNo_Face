@@ -11,18 +11,21 @@
 		<!--<div asp-validation-summary="All" class="text-danger"></div>-->
 		<div class="mb-3">
 			<label asp-for="Name" class="title_block"></label>
-			<input asp-for="Name" class="textbox" /> <br />
+			<input asp-for="Name" type="hidden" /> <br />
+			<span class="textbox">@Model.Name</span>
 			<span asp-validation-for="Name" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="NumberPhone" class="title_block"></label>
-			<input asp-for="NumberPhone" class="textbox" />
+			<input asp-for="NumberPhone" type="hidden" /> <br />
+			<span class="textbox">@Model.NumberPhone</span>
 			<span asp-validation-for="NumberPhone" class="text-danger"></span>
 		</div>
 
 		<div class="mb-3">
 			<label asp-for="Birthday" class="title_block"></label>
-			<input asp-for="Birthday" class="textbox" />
+			<input asp-for="Birthday" type="hidden" /> <br />
+			<span class="textbox">@Model.Birthday</span>
 			<span asp-validation-for="Birthday" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
@@ -38,12 +41,14 @@
 		</div>
 		<div class="mb-3">
 			<label asp-for="UserName" class="title_block"></label>
-			<input asp-for="UserName" class="textbox" />
+			<input asp-for="UserName" type="hidden" /> <br />
+			<span class="textbox">@Model.UserName</span>
 			<span asp-validation-for="UserName" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="Password" class="title_block"></label>
-			<input asp-for="Password" class="textbox" />
+			<input asp-for="Password" type="hidden" /> <br />
+			<span class="textbox">@Model.Password</span>
 			<span asp-validation-for="Password" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
@@ -53,7 +58,15 @@
 			<input asp-for="Position" type="radio" name="Position" value="3" /> Nhân Viên &ensp;
 			<span asp-validation-for="Position" class="text-danger"></span>
 		</div>
-		<button type="submit" class="btn btn-primary">Xóa</button>
+		<button type="submit" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
 		<a asp-controller="User" asp-action="Index">Trở Về </a>
 	</div>
 </form>
+
+<script>
+	function confirmDelete() {
+		if (confirm("Bạn có muốn xóa không?")) {
+			document.querySelector('.SignIn').submit();
+		}
+	}
+</script>

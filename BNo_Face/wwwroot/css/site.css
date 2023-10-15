@@ -53,6 +53,7 @@ nav ul li {
     background-color: grey;
     width: 1497px;
     height: 1083px;
+    max-width:1497px;
 
 }
 .textbox {
@@ -104,3 +105,9 @@ nav ul li {
             overflow: visible;
             white-space: normal;
         }*/
+
+
+/*home index*/
+.home {
+    width:100%;
+}

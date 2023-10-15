@@ -80,20 +80,26 @@ namespace BNo_Face.Controllers
 			{
 				return NotFound();
 			}
+			Console.WriteLine(s.CategoryName.ToString()+ "" + s.CategoryID);
 			return View(s);
 		}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult Delete(Category category)
-		{	
-			
+		{
+			Console.WriteLine(category.CategoryName.ToString() + "" + category.CategoryID);
 			if (ModelState.IsValid)
 			{
 				_db.Categories.Remove(category);
 				_db.SaveChanges();
+				var s = _db.Categories.FirstOrDefault(u => u.CategoryID == category.CategoryID);
+				if (s == null)
+				{
+					Console.WriteLine("Nah it's null");
+				}
 				return RedirectToAction("Index");
 			}
-			
+			Console.WriteLine(category.CategoryName.ToString() + "" + category.CategoryID + "What?? ");
 			return View(category);
 
 			

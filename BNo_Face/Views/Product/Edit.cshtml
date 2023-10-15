@@ -60,8 +60,16 @@
 			</div>
 
 
-			<button type="submit" class="btn btn-primary">Sửa</button>
+			<button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
 			<a asp-controller="Product" asp-action="Index"> Trở về </a>
 		</div>
 	</form>
 </div>
+
+<script>
+	function confirmEdit() {
+		if (confirm("Bạn có muốn sửa không?")) {
+			document.querySelector('.SignIn').submit();
+		}
+	}
+</script>
