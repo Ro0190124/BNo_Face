@@ -32,7 +32,7 @@
 			Four spaces gap: &emsp;
 						-->
 			<label asp-for="Sex" class="title_block"></label>&emsp;&emsp;
-			<input type="radio" name="Sex" value="true" /> Nam &ensp;
+			<input  type="radio" name="Sex" value="true" checked="checked"/> Nam &ensp;
 			<input type="radio" name="Sex" value="false" /> Nữ
 			<span asp-validation-for="Sex" class="text-danger"></span>
 		</div>
@@ -50,13 +50,13 @@
 			<label asp-for="Position" class="title_block"></label>
 			<input type="radio" name="Position" value="1" /> Admin &ensp;
 			<input type="radio" name="Position" value="2" /> Kế Toán &ensp;
-			<input type="radio" name="Position" value="3" /> Nhân Viên &ensp;
+			<input type="radio" name="Position" value="3" checked="checked" /> Nhân Viên &ensp;
 			<span asp-validation-for="Position" class="text-danger"></span>
 		</div>
 		
 		
 		<button type="submit" class="btn btn-primary">Create</button>
-		<a asp-controller="User" asp-action="Index">Back to home </a>
+		<a asp-controller="User" asp-action="Index"> Trở về</a>
 	</div>
 </form>
 </div>

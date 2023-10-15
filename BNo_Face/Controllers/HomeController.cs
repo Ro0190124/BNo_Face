@@ -53,7 +53,11 @@ namespace BNo_Face.Controllers
 				_db.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			return View(user);
+			else
+			{
+				return View(user);
+			}
+			
 		}
 	}
 }

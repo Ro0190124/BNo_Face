@@ -25,8 +25,6 @@ namespace BNo_Face.Controllers
 				}
 				).ToList();
 			ViewBag.CategoryList = categoryList;
-		
-
 		}
 		public IActionResult Index(string searchString)
 		{

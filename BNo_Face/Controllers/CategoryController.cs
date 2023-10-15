@@ -38,7 +38,6 @@ namespace BNo_Face.Controllers
 				_db.Categories.Add(category);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
-
 			}
 			return View(category);
 		}
