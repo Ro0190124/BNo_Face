@@ -1,9 +1,7 @@
 ﻿@model Product
 
-
-<div class="container">
-	<form method="post" asp-action="Edit" >
-		<div class="border p-3">
+<form method="post" asp-action="Edit" class="SignIn">
+		<div class="border p-3 Backgroud_US">
 			<div class="row pb-2">
 				<h2>Sửa Sản Phẩm</h2>
 			</div>
@@ -20,7 +18,7 @@
 				<label asp-for="CategoryID" class="title_block"></label>
 				@*@Html.DropDownList("category", ViewBag.categoryList as SelectList, new { @class = "form-select" })*@
 
-				<select asp-for="CategoryID" asp-items="ViewBag.categoryList" class="form-select">
+				<select asp-for="CategoryID" asp-items="ViewBag.categoryList" class="textbox" >
 					@*<option disabled onselect="">--Chọn--</option>*@
 				</select>
 
@@ -63,9 +61,7 @@
 			<button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
 			<a asp-controller="Product" asp-action="Index"> Trở về </a>
 		</div>
-	</form>
-</div>
-
+</form>
 <script>
 	function confirmEdit() {
 		if (confirm("Bạn có muốn sửa không?")) {
