@@ -11,7 +11,7 @@ namespace BNo_Face.Model
 	public class Category
 	{
 		[Key]
-		[Display(Name ="ID")]
+		[Display(Name ="Mã Danh Mục")]
 		public int CategoryID { get; set; }
 		[Required]
 		[MaxLength(30)]

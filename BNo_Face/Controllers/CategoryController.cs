@@ -13,7 +13,15 @@ namespace BNo_Face.Controllers
 			_db = db;
 		}
 		public IActionResult Index(string searchString)
+
 		{
+			// get cookies
+			var cookie = Request.Cookies["userID"];
+			// check cookie
+			if (cookie == null)
+			{
+				return RedirectToAction("Index", "Home");
+			}
 			var categorys = from u in _db.Categories // lấy toàn bộ liên kết
 						select u;
 

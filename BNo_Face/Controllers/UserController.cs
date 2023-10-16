@@ -18,6 +18,13 @@ namespace BNo_Face.Controllers
 		//tìm kiếm
 		public IActionResult Index(string searchString)
 		{
+			// get cookies
+			var cookie = Request.Cookies["userID"];
+			// check cookie
+			if (cookie == null)
+			{
+				return RedirectToAction("Index", "Home");
+			}
 			/*IEnumerable<User> userlist = _db.Users.ToList();
 			return View(userlist);*/
 			var users = from u in _db.Users // lấy toàn bộ liên kết

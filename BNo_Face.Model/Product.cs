@@ -38,17 +38,19 @@ namespace BNo_Face.Model
         public string Color { get; set; }
         [Display(Name = "Giá")]
         [Required]
-
-        public string Price { get; set; }
+		public string Price { get; set; }
         [Display(Name = "Ghi Chú")]
+		
         [MaxLength(80)]
-        public string Note { get; set; }
+		public string Note { get; set; }
         [Required]
 		
 		public int CategoryID { get; set; }
         [ValidateNever]
 		[ForeignKey("CategoryID")]
 		public Category Category { get; set; }
-
+        public DateTime DateOfProduct { get; private set; } = DateTime.Now;
 	}
+
 }
+

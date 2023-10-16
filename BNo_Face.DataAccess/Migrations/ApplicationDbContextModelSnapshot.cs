@@ -36,9 +36,6 @@ namespace BNo_Face.DataAccess.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
                     b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
@@ -72,38 +69,22 @@ namespace BNo_Face.DataAccess.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("BNo_Face.Model.Payment", b =>
+            modelBuilder.Entity("BNo_Face.Model.List_Product", b =>
                 {
-                    b.Property<int>("PaymentID")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentID"));
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("DateOfPayment")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Note")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<int>("TotalPrice")
+                    b.Property<int>("BillID")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("PaymentID");
+                    b.HasKey("ProductID", "BillID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("BillID");
 
-                    b.ToTable("Payments");
+                    b.ToTable("List_Products");
                 });
 
             modelBuilder.Entity("BNo_Face.Model.Product", b =>
@@ -121,6 +102,9 @@ namespace BNo_Face.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("DateOfProduct")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Note")
                         .IsRequired()
@@ -218,15 +202,23 @@ namespace BNo_Face.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BNo_Face.Model.Payment", b =>
+            modelBuilder.Entity("BNo_Face.Model.List_Product", b =>
                 {
-                    b.HasOne("BNo_Face.Model.User", "User")
+                    b.HasOne("BNo_Face.Model.Bill", "Bill")
                         .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("BillID")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.HasOne("BNo_Face.Model.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Bill");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("BNo_Face.Model.Product", b =>

@@ -17,6 +17,25 @@ namespace BNo_Face.DataAccess.Data
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Bill> Bills { get; set; }
-		public DbSet<Payment> Payments { get; set; }
+		public DbSet<List_Product> List_Products { get; set; }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			// Use HasKey to define the primary key for the List_Product entity
+			modelBuilder.Entity<List_Product>()
+				.HasKey(lp => new { lp.ProductID, lp.BillID });
+			modelBuilder.Entity<List_Product>()
+			.HasOne(lp => lp.Product)
+			.WithMany()
+			.HasForeignKey(lp => lp.ProductID)
+			.OnDelete(DeleteBehavior.NoAction);
+
+			modelBuilder.Entity<List_Product>()
+				.HasOne(lp => lp.Bill)
+				.WithMany()
+				.HasForeignKey(lp => lp.BillID)
+				.OnDelete(DeleteBehavior.NoAction);
+		}
 	}
 }

@@ -28,8 +28,19 @@ namespace BNo_Face.Controllers
 		}
 		public IActionResult Index(string searchString)
 		{
-			//show the list of products with Name of category
 			
+			// get cookies
+			var cookie = Request.Cookies["userID"];
+			
+			// check cookie
+			if (cookie == null)
+			{
+				return RedirectToAction("Index", "Home");
+			}
+			
+			
+			//show the list of products with Name of category
+
 			var products = _db.Products.Include(u => u.Category).ToList();
 			//searching
 			if (!string.IsNullOrEmpty(searchString))

@@ -20,12 +20,31 @@ namespace BNo_Face.Controllers
 		{
 			// dòng này đặt ở controller trang nào thì _layout sẽ ẩn đi ở trang đó
 			ViewData["HideHeader"] = true;
-			var user = _db.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
-			if (user != null)
+			var user = _db.Users.FirstOrDefault(u => u.UserName == userName);
+			
+			if (user != null )
 			{
-				return RedirectToAction("Index", "Product");
+				// set cookies
+				Response.Cookies.Append("userID", user.UserID.ToString());
+				Console.WriteLine(user.UserID);
+				if(user.Position == 3 )
+				{
+                    ViewData["StaffPosition"] = true;
+				}
+                else if (user.Position == 2)
+				{
+                    ViewData["ManagerPosition"] = true;
+                }
+				
+				Console.WriteLine(ViewData["UserID"]);
+				return RedirectToAction("Index", "Product", new { id = user.UserID});
+
             }
-			return View();
+			else
+			{ 
+				return View();
+			}
+			
 		}
 		public IActionResult Home()
 		{
@@ -55,6 +74,7 @@ namespace BNo_Face.Controllers
 			}
 			else
 			{
+				
 				return View(user);
 			}
 			

@@ -27,6 +27,13 @@ namespace BNo_Face.Controllers
 		}
 		public IActionResult Index(string searchString)
 		{
+			// get cookies
+			var cookie = Request.Cookies["userID"];
+			// check cookie
+			if (cookie == null)
+			{
+				return RedirectToAction("Index", "Home");
+			}
 			var bills = from u in _db.Bills 
 							select u;
 			
