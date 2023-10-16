@@ -2,6 +2,7 @@
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BNo_Face.Controllers
@@ -123,5 +124,6 @@ namespace BNo_Face.Controllers
 
 
 		}
+		
 	}
 }

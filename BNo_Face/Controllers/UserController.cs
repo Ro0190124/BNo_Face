@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace BNo_Face.Controllers
 {
@@ -49,6 +50,12 @@ namespace BNo_Face.Controllers
 			{
 				ModelState.AddModelError("UserName", "Tên và mật khẩu không được trùng");
 			}
+
+			if(!Regex.IsMatch(user.Name, @"^[\p{L}\s]+$"))
+			{
+				ModelState.AddModelError("Name", "Họ tên chỉ được chứa các ký tự chữ và khoảng trắng.");
+			}
+
 			if (ModelState.IsValid)
 			{
 				Console.WriteLine("Create user");

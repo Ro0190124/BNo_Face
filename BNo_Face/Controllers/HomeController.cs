@@ -21,8 +21,7 @@ namespace BNo_Face.Controllers
 			// dòng này đặt ở controller trang nào thì _layout sẽ ẩn đi ở trang đó
 			ViewData["HideHeader"] = true;
 			var user = _db.Users.FirstOrDefault(u => u.UserName == userName);
-			
-			if (user != null )
+			if (user != null && user.Password == password)
 			{
 				// set cookies
 				Response.Cookies.Append("userID", user.UserID.ToString());

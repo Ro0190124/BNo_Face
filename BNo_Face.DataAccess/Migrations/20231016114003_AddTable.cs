@@ -55,7 +55,7 @@ namespace BNo_Face.DataAccess.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Size = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     Color = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Price = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<int>(type: "int", nullable: false),
                     Note = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     DateOfProduct = table.Column<DateTime>(type: "datetime2", nullable: false)

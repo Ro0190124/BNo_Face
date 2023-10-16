@@ -12,15 +12,19 @@ namespace BNo_Face.Model
 		[Key]
 		[Display(Name = "User ID")]
 		public int UserID { get; set; }
+		[Required(ErrorMessage = "Họ tên không được để trống.")]
 		[MaxLength(50)]
 		[MinLength (1)]
 		[Display(Name = "Họ Tên")]
+		[RegularExpression(@"^[\p{L}\s]+$",
+			ErrorMessage = "Họ tên chỉ được chứa" +
+			" các ký tự chữ và khoảng trắng.")]
 		public string Name { get; set; }
 		[Display(Name = "Ngày Sinh")]
 		public DateTime Birthday { get; set; }
 		[Display(Name = "Giới Tính")]
 		public bool Sex { get; set; }
-		
+		[Required(ErrorMessage = "Số điện thoại không được để trống.")]
 		[StringLength(10)]
 		[Display(Name = "SĐT")]
 		public string NumberPhone { get; set; }
@@ -42,4 +46,5 @@ namespace BNo_Face.Model
 		// ngày lập tài khoản
 		public DateTime DateOfAccount { get; private set; } = DateTime.Now;
 	}
+
 }

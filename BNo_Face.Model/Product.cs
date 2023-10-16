@@ -38,9 +38,8 @@ namespace BNo_Face.Model
         public string Color { get; set; }
         [Display(Name = "Giá")]
         [Required]
-		public string Price { get; set; }
-        [Display(Name = "Ghi Chú")]
-		
+		public int Price { get; set; }
+        [Display(Name = "Ghi Chú")]		
         [MaxLength(80)]
 		public string Note { get; set; }
         [Required]
@@ -50,6 +49,15 @@ namespace BNo_Face.Model
 		[ForeignKey("CategoryID")]
 		public Category Category { get; set; }
         public DateTime DateOfProduct { get; private set; } = DateTime.Now;
+	}
+	public static ValidationResult ValidateBirthday(DateTime birthday, ValidationContext context)
+	{
+		if (birthday > DateTime.Now)
+		{
+			return new ValidationResult("Ngày sinh phải nhỏ hơn ngày hiện tại.");
+		}
+
+		return ValidationResult.Success;
 	}
 
 }
