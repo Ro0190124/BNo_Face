@@ -50,15 +50,6 @@ namespace BNo_Face.Model
 		public Category Category { get; set; }
         public DateTime DateOfProduct { get; private set; } = DateTime.Now;
 	}
-	public static ValidationResult ValidateBirthday(DateTime birthday, ValidationContext context)
-	{
-		if (birthday > DateTime.Now)
-		{
-			return new ValidationResult("Ngày sinh phải nhỏ hơn ngày hiện tại.");
-		}
-
-		return ValidationResult.Success;
-	}
 
 }
 

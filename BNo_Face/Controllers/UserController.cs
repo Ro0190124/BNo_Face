@@ -55,6 +55,7 @@ namespace BNo_Face.Controllers
 			{
 				ModelState.AddModelError("Name", "Họ tên chỉ được chứa các ký tự chữ và khoảng trắng.");
 			}
+			
 
 			if (ModelState.IsValid)
 			{
