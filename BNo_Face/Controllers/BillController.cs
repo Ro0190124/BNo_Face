@@ -1,6 +1,8 @@
 ﻿using BNo_Face.DataAccess.Data;
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BNo_Face.Controllers
 {
@@ -11,26 +13,43 @@ namespace BNo_Face.Controllers
 		{
 			_db = db;
 		}
+		public void LoadProduct()
+		{
+			IEnumerable<SelectListItem> productList = _db.Products.Select(
+				u => new SelectListItem()
+				{
+					Text = u.ProductName,
+					Value = u.ProductID.ToString()
+				}
+				).ToList();
+			ViewBag.ProductList = productList;
+		
+		}
 		public IActionResult Index(string searchString)
 		{
-			var bills = from u in _db.Bills // lấy toàn bộ liên kết
+			var bills = from u in _db.Bills 
 							select u;
 			
-			if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+			if (!String.IsNullOrEmpty(searchString)) 
 			{
-				bills = bills.Where(c => c.BillID.ToString().Contains(searchString)); //lọc theo chuỗi tìm kiếm
+				bills = bills.Where(c => c.BillID.ToString().Contains(searchString)); 
 			}
 			return View(bills);
 		}
 		public IActionResult Create()
 		{
+			LoadProduct();
 			return View();
+
 		}
+
+		
+
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult Create(Bill bill)
 		{
-
+			LoadProduct();
 			if (ModelState.IsValid)
 			{
 
