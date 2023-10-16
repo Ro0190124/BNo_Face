@@ -11,51 +11,75 @@
 		<!--<div asp-validation-summary="All" class="text-danger"></div>-->
 		<div class="mb-3">
 			<label asp-for="Name" class="title_block"></label>
-			<input asp-for="Name" type="hidden" /> <br />
-			<span class="textbox">@Model.Name</span>
+			<input asp-for="Name" type="hidden" /> 
+			<span class="textbox BorderShow">@Model.Name</span>
 			<span asp-validation-for="Name" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="NumberPhone" class="title_block"></label>
-			<input asp-for="NumberPhone" type="hidden" /> <br />
-			<span class="textbox">@Model.NumberPhone</span>
+			<input asp-for="NumberPhone" type="hidden" />
+			<span class="textbox BorderShow">@Model.NumberPhone</span>
 			<span asp-validation-for="NumberPhone" class="text-danger"></span>
 		</div>
 
 		<div class="mb-3">
 			<label asp-for="Birthday" class="title_block"></label>
-			<input asp-for="Birthday" type="hidden" /> <br />
-			<span class="textbox">@Model.Birthday</span>
+			<input asp-for="Birthday" type="hidden" /> 
+			<span class="textbox BorderShow">@Model.Birthday</span>
 			<span asp-validation-for="Birthday" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<!--
-			Regular space: &nbsp;
-			Two spaces gap: &ensp;
-			Four spaces gap: &emsp;
-						-->
-			<label asp-for="Sex" class="title_block"></label>&emsp;&emsp;
-			<input asp-for="Sex" type="radio" name="Sex" value="true" /> Nam &ensp;
-			<input asp-for="Sex" type="radio" name="Sex" value="false" /> Nữ
+			<label asp-for="Sex" class="title_block"></label>
+			@{
+				if (Model.Sex == true)
+				{
+					<input asp-for="Sex" type="hidden" />
+					<span class="textbox BorderShow">Nam</span>
+				}
+				else
+				{
+					<input asp-for="Sex" type="hidden" />
+					<span class="textbox BorderShow">Nữ</span>
+				}
+			}
 			<span asp-validation-for="Sex" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="UserName" class="title_block"></label>
-			<input asp-for="UserName" type="hidden" /> <br />
-			<span class="textbox">@Model.UserName</span>
+			<input asp-for="UserName" type="hidden" /> 
+			<span class="textbox BorderShow">@Model.UserName</span>
 			<span asp-validation-for="UserName" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="Password" class="title_block"></label>
-			<input asp-for="Password" type="hidden" /> <br />
-			<span class="textbox">@Model.Password</span>
+			<input asp-for="Password" type="hidden" />
+			<span class="textbox BorderShow">@Model.Password</span>
 			<span asp-validation-for="Password" class="text-danger"></span>
 		</div>
-		<div class="mb-3">
+@*		<div class="mb-3">
 			<label asp-for="Position" class="title_block"></label>
 			<input asp-for="Position" type="radio" name="Position" value="1" /> Admin &ensp;
 			<input asp-for="Position" type="radio" name="Position" value="2" /> Kế Toán &ensp;
 			<input asp-for="Position" type="radio" name="Position" value="3" /> Nhân Viên &ensp;
+			<span asp-validation-for="Position" class="text-danger"></span>
+		</div>*@
+		<div class="mb-3">
+			<label asp-for="Position" class="title_block"></label>
+			@{
+				if (Model.Position == 1)
+				{
+					<input asp-for="Position" type="hidden" />
+					<span class="textbox BorderShow">Admin</span>
+				}else if (Model.Position == 2)
+				{
+					<input asp-for="Position" type="hidden" />
+					<span class="textbox BorderShow">Kế Toán</span>
+				}else
+				{
+					<input asp-for="Position" type="hidden" />
+					<span class="textbox BorderShow">Nhân Viên</span>
+				}
+			}
 			<span asp-validation-for="Position" class="text-danger"></span>
 		</div>
 		<button type="submit" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>

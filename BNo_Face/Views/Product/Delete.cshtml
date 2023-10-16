@@ -15,44 +15,44 @@
 			<div class="mb-3" >
 				<label asp-for="ProductName" class="title_block"></label>
 				<input asp-for="ProductName" type="hidden" /> 
-				<span class="textbox">@Model.ProductName</span>
+				<span class="textbox BorderShow">@Model.ProductName</span>
 				<span asp-validation-for="ProductName" class="text-danger"></span>
 			</div>
 			<div class="mb-3">
 				<label asp-for="CategoryID" class="title_block"></label>
 				<input asp-for="CategoryID" type="hidden" /> 
-				<span class="textbox">@Model.Category?.CategoryName</span>
+				<span class="textbox BorderShow">@Model.Category?.CategoryName</span>
 				<span asp-validation-for="CategoryID" class="text-danger"></span>
 			</div>
 			<div class="mb-3">
 				<label asp-for="Color" class="title_block"></label>
 				<input asp-for="Color" type="hidden" /> 
-				<span class="textbox">@Model.Color</span>
+				<span class="textbox BorderShow">@Model.Color</span>
 				<span asp-validation-for="Color" class="text-danger"></span>
 			</div>
 
 			<div class="mb-3">
 				<label asp-for="Size" class="title_block"></label>
 				<input asp-for="Size" type="hidden" /> 
-				<span class="textbox">@Model.Size</span>
+				<span class="textbox BorderShow">@Model.Size</span>
 				<span asp-validation-for="Size" class="text-danger"></span>
 			</div>
 			<div class="mb-3">
 				<label asp-for="Quantity" class="title_block"></label>
 				<input asp-for="Quantity" type="hidden" /> 
-				<span class="textbox">@Model.Quantity</span>
+				<span class="textbox BorderShow">@Model.Quantity</span>
 				<span asp-validation-for="Quantity" class="text-danger"></span>
 			</div>
 			<div class="mb-3">
 				<label asp-for="Price" class="title_block"></label>
 				<input asp-for="Price" type="hidden" />
-				<span class="textbox">@Model.Price</span>
+				<span class="textbox BorderShow">@Model.Price</span>
 				<span asp-validation-for="Price" class="text-danger"></span>
 			</div>
 			<div class="mb-3">
 				<label asp-for="Note" class="title_block"></label>
 				<input asp-for="Note" type="hidden" /> 
-				<span class="textbox">@Model.Note</span>
+				<span class="textbox BorderShow">@Model.Note</span>
 				<span asp-validation-for="Note" class="text-danger"></span>
 			</div>
 			<div class="mb-3">
@@ -60,13 +60,13 @@
 				@{
 					if(Model.Status == true)
 					{
-						<input asp-for="Note" type="hidden" /> 
-						<span class="textbox">Còn</span>
+						<input asp-for="Note" type="hidden" />
+						<span class="textbox BorderShow">Còn</span>
 					}
 					else
 					{
-						<input asp-for="Note" type="hidden" /> 
-						<span class="textbox">Hết</span>
+						<input asp-for="Note" type="hidden" />
+						<span class="textbox BorderShow">Hết</span>
 					}
 				}
 				<span asp-validation-for="Status" class="text-danger"></span>
