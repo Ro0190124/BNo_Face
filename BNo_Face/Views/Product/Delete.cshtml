@@ -1,9 +1,9 @@
 ﻿@model Product
 
 
-<div class="container">
-	<form method="post" asp-action="Delete">
-		<div class="border p-3">
+
+	<form method="post" asp-action="Delete" class="SignIn">
+	<div class="border p-3 Backgroud_US">
 			<div class="row pb-2">
 				<h2>Xóa Sản Phẩm</h2>
 			</div>
@@ -75,7 +75,6 @@
 			<a asp-controller="Product" asp-action="Index"> Trở về </a>
 		</div>
 	</form>
-</div>
 
 <script>
 	function confirmDelete() {
