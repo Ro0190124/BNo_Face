@@ -24,11 +24,14 @@
 		<div class="col-1">
 			<h2> Danh Mục </h2>
 		</div>
-		<div class="col-1">
+		<div class="col-1 bgr-a">
 
 			<a asp-controller="Category" asp-action="Create" class="btn btn-primary">Thêm Danh Mục</a>
 		</div>
 	</div>
+
+	
+
 	@using (Html.BeginForm())
 
 	{
@@ -57,14 +60,14 @@
 					<td>@item.CategoryID</td>
 					<td>@item.CategoryName</td>
 					<td>
-						<div>
+						<div class="bgr-a">
 							<a class="btn btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id=@item.CategoryID>
 								Sửa @item.CategoryID
 							</a>
 						</div>
 					</td>
 					<td>
-						<div>
+						<div class="bgr-x">
 							<a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@item.CategoryID">
 								Xóa
 							</a>

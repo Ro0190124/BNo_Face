@@ -71,8 +71,16 @@
 				}
 				<span asp-validation-for="Status" class="text-danger"></span>
 			</div>
-			<button type="submit" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
-			<a asp-controller="Product" asp-action="Index"> Trở về </a>
+			<div class="Chia">
+				<div class="Sbetween">
+					<div class="bgr-xbt">
+						<button type="submit" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
+					</div>
+					<div class="bgr-bt">
+						<button class="btn btn-primary" asp-controller="Product" asp-action="Index">Trở về</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</form>
 

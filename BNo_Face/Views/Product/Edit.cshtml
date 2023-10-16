@@ -52,16 +52,17 @@
 			</div>
 			<div class="mb-3">
 				<label asp-for="Status" class="title_block"></label>
-				<input type="radio" name="Status" value="true" /> Còn &ensp;
-				<input type="radio" name="Status" value="false" /> Hết &ensp;
+				<input type="radio" name="Status" value="true" asp-for="Status" /> Còn &ensp;
+			<input type="radio" name="Status" value="false" asp-for="Status" /> Hết &ensp;
 				<span asp-validation-for="Status" class="text-danger"></span>
 			</div>
 
-
-			<button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
-			<a asp-controller="Product" asp-action="Index"> Trở về </a>
+			<div class="bgr-bt">
+				<button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
+				<button class="btn btn-primary" asp-controller="Product" asp-action="Index">Trở về</button>
+			</div>
 		</div>
-</form>
+	</form>
 <script>
 	function confirmEdit() {
 		if (confirm("Bạn có muốn sửa không?")) {

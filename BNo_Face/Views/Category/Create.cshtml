@@ -13,8 +13,11 @@
 					<input asp-for="CategoryName" class="textbox" /> <br />
 					<span asp-validation-for="CategoryName" class="text-danger"></span>
 				</div>
-				<button type="submit" class="btn btn-primary">Tạo Danh Mục</button>
-				<a asp-controller="Category" asp-action="Index">Trở về </a>
+
+				<div class="bgr-bt">
+					<button type="submit" class="btn btn-primary">Tạo Danh Mục</button>
+					<button class="btn btn-primary" asp-controller="Category" asp-action="Index">Trở về</button>
+				</div>
 			</div>
 		</form>
 	</div>
