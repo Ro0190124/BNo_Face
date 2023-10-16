@@ -1,15 +1,23 @@
 ﻿@model User
 <form method="post"asp-action="Loggin" >
-	<div class="mb-3">
-		<label asp-for="UserName" class="title_block"></label>
-		<input asp-for="UserName" class="textbox" />
-		
+	<div class="Home_Loggin">
+		<h2>Đăng nhập</h2>
+		<div class="mb-3">
+			<label asp-for="UserName" class="title_block"></label>
+			<input asp-for="UserName" class="textbox" />
+
+		</div>
+		<div class="mb-3">
+			<label asp-for="Password" class="title_block"></label>
+			<input asp-for="Password" type="password" class="textbox" />
+
+		</div>
+		<div class="Home_Button bgr-bt">
+			<button type="submit" class="btn btn-primary">Đăng nhập</button>
+			@*		<a asp-controller="Home" asp-action="Index">Thoát </a>*@
+			<button class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</button>
+
+		</div>
 	</div>
-	<div class="mb-3">
-		<label asp-for="Password" class="title_block"></label>
-		<input asp-for="Password" type="password" class="textbox" />
-		
-	</div>
-	<button type="submit" class="btn btn-primary">Đăng nhập</button>
-	<a asp-controller="Home" asp-action="Index">Thoát </a>
+
 </form>

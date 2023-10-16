@@ -1,7 +1,6 @@
 ﻿@model User
-<div class="container">
 	<form method="post" class="SignIn">
-		<div class="border p-3">
+	<div class="border p-3 Backgroud_US">
 			<div class="row pb-2">
 				<h2> Đăng Ký</h2>
 			</div>
@@ -28,7 +27,7 @@
 				Four spaces gap: &emsp;
 							-->
 				<label asp-for="Sex" class="title_block"></label>&emsp;&emsp;
-				<input type="radio" name="Sex" value="true" /> Nam &ensp;
+			<input type="radio" name="Sex" value="true" checked="checked" /> Nam &ensp;
 				<input type="radio" name="Sex" value="false" /> Nữ
 				<span asp-validation-for="Sex" class="text-danger"></span>
 			</div>
@@ -46,11 +45,13 @@
 				<label asp-for="Position" class="title_block"></label>
 				<input type="radio" name="Position" value="1" /> Admin &ensp;
 				<input type="radio" name="Position" value="2" /> Kế Toán &ensp;
-				<input type="radio" name="Position" value="3" /> Nhân Viên &ensp;
+			<input type="radio" name="Position" value="3" checked="checked" /> Nhân Viên &ensp;
 				<span asp-validation-for="Position" class="text-danger"></span>
 			</div>
+		<div class="Home_Button bgr-bt">
 			<button type="submit" class="btn btn-primary">Đăng Ký</button>
-			<a asp-controller="Home" asp-action="Index">Back to home </a>
+@*			<a asp-controller="Home" asp-action="Index">Back to home </a>*@
+			<button class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</button>
+		</div>
 		</div>
 	</form>
-</div>

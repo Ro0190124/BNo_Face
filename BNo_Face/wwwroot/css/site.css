@@ -20,10 +20,11 @@ body {
     margin-bottom: 60px;
     display: flex;
     justify-content: space-between;
+/*    background-color:#858585;*/
 }
 header {
     background-color: grey;
-    flex: 1;
+    flex: 1; 
 }
 nav {
     width: 300px;
@@ -138,4 +139,65 @@ nav ul li {
     background-color: gray;
     /* muốn có khung thì comment cái này nhá :V*/
     border: 1px solid gray !important;
+}
+
+/*Chỉnh sửa home/Index*/
+.home_Between {
+    height:600px;
+    width:480px;
+    display: flex;
+    flex-direction: column;
+/*    align-items: center;*/
+}
+
+.home {
+    margin-bottom: 5px;
+}
+.Home_Button {
+    display: flex;
+    justify-content:space-around;
+    margin-top: 5px;
+}
+
+
+/* chỉnh home Loggin*/
+.Home_Loggin {
+    height: 600px;
+    width: 650px;
+/*    background-color: aliceblue;*/
+    display: flex;
+    flex-direction: column;
+}
+    .Home_Loggin h2 {
+        text-align: center;
+    }
+    .Home_Loggin .mb-3{
+        margin:0 auto;
+        width:80%;
+        display:flex;
+        justify-content:space-around;
+    }
+
+    /*đổi màu buttom và thẻ a*/
+.bgr-a a:hover{
+    background-color:green;
+}
+
+.bgr-bt button:hover{
+    background-color: green;
+}
+.bgr-x a:hover{
+    background-color:darkred;
+}
+.bgr-xbt button:hover {
+    background-color: darkred;
+}
+
+.Chia{
+    width:150px;
+}
+/*chỉnh nút xóa và trờ về = hàng nhau*/
+.Sbetween {
+    display: flex;
+        justify-content: space-between;
 }

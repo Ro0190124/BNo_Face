@@ -31,9 +31,11 @@
             <input asp-for="CategoryName" class="textbox" /> <br />
             <span asp-validation-for="CategoryName" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
-        <a asp-controller="Category" asp-action="Index">Trở về </a>
-    </div>
+        <div class="bgr-bt">
+            <button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
+            <button class="btn btn-primary" asp-controller="Category" asp-action="Index">Trở về</button>
+        </div>
+     </div>
 </form>
 
 <script>

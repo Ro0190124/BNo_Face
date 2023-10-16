@@ -13,9 +13,16 @@
 			<span class="textbox BorderShow">@Model.CategoryName</span>
 			<span asp-validation-for="CategoryName" class="text-danger"></span>
 		</div>
-         <button type="button" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
-		@*<button type="submit" class="btn btn-primary">Xóa</button>*@
-		<a asp-controller="Category" asp-action="Index">Trở về </a>
+		<div class="Chia">
+			<div class="Sbetween">
+				<div class="bgr-xbt">
+					<button type="submit" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
+				</div>
+				<div class="bgr-bt">
+					<button class="btn btn-primary" asp-controller="Category" asp-action="Index">Trở về</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </form>
 

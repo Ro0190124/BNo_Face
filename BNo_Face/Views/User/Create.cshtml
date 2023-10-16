@@ -52,10 +52,12 @@
 			<input type="radio" name="Position" value="3" checked="checked" /> Nhân Viên &ensp;
 			<span asp-validation-for="Position" class="text-danger"></span>
 		</div>
-		
-		
-		<button type="submit" class="btn btn-primary">Thêm</button>
-		<a asp-controller="User" asp-action="Index"> Trở về</a>
+
+		<div class="bgr-bt">
+			<button type="submit" class="btn btn-primary">Thêm</button>
+			@*		<a asp-controller="User" asp-action="Index"> Trở về</a>*@
+			<button class="btn btn-primary" asp-controller="User" asp-action="Index">Trở về</button>
+		</div>
 	</div>
 </form>
 </div>

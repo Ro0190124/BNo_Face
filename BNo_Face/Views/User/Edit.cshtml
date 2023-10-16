@@ -54,8 +54,11 @@
 			<input asp-for="Position" type="radio" name="Position" value="3" /> Nhân Viên &ensp;
 			<span asp-validation-for="Position" class="text-danger"></span>
 		</div>
+		<div class="bgr-bt">
 		<button type="submit" class="btn btn-primary" onclick="confirmEdit()">Sửa</button>
-		<a asp-controller="User" asp-action="Index">Trở Về </a>	
+	@*	<a asp-controller="User" asp-action="Index">Trở Về </a>	*@
+			<button class="btn btn-primary" asp-controller="User" asp-action="Index">Trở về</button>
+		</div>
 	</div>
 </form>
 <script>

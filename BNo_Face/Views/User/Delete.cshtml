@@ -82,8 +82,20 @@
 			}
 			<span asp-validation-for="Position" class="text-danger"></span>
 		</div>
-		<button type="submit" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
-		<a asp-controller="User" asp-action="Index">Trở Về </a>
+		<div class="Chia">
+			<div class="Sbetween">
+				<div class="bgr-xbt">
+					<button type="submit" class="btn btn-primary" onclick="confirmDelete()">Xóa</button>
+				</div>
+				<div class="bgr-bt">
+					<button class="btn btn-primary" asp-controller="User" asp-action="Index">Trở về</button>
+				</div>
+			</div>
+		</div>
+
+
+
+
 	</div>
 </form>
 

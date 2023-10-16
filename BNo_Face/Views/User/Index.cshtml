@@ -5,7 +5,7 @@
 		<div class="col-1">
 			<h2> User </h2>
 		</div>
-		<div class="col-1">
+		<div class="col-1 bgr-a">
 
 			<a asp-controller="User" asp-action="Create" class="btn btn-primary">Thêm Nhân Viên</a>
 			<br />
@@ -66,14 +66,14 @@
 					<td>@position</td>
 						<td>@item.DateOfAccount.ToShortDateString()</td>
 					<td>
-						<div>
+							<div class="bgr-a">
 							<a class="btn btn-primary" asp-controller="User" asp-action="Edit" asp-route-id="@item.UserID">
 								Sửa
 							</a>
 						</div>
 					</td>
 					<td>
-						<div>
+							<div class="bgr-x">
 							<a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.UserID">
 							Xóa
 							</a>

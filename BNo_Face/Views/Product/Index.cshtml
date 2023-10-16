@@ -3,9 +3,9 @@
 <div class="container">
 	<div class="row pt-4">
 		<div class="col-1">
-			<h2> User </h2>
+			<h2> Sản Phẩm </h2>
 		</div>
-		<div class="col-1">
+		<div class="col-1 bgr-a">
 
 			<a asp-controller="Product" asp-action="Create" class="btn btn-primary">Thêm Sản Phẩm</a>
 			<br />
@@ -41,25 +41,35 @@
 			<tbody>
 				@foreach (var item in Model)
 				{
-					
+					string status = "";
+					if(item.Status == true)
+					{
+						status = "Còn";
+					}
+					else
+					{
+						status = "Hết";
+					}
+
 					<tr>
 						<td>@item.ProductName</td>
 						<td>@item.Category.CategoryName</td>
 						<td>@item.Color</td>
 						<td>@item.Size</td>
-						<td>@item.Status</td>
+
+						<td>@status</td>
 						<td>@item.Quantity</td>
 						<td>@item.Price</td>
 						<td>@item.Note</td>
 						<td>
-							<div>
+							<div class="bgr-a">
 								<a class="btn btn-primary" asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductID">
 									Sửa
 								</a>
 							</div>
 						</td>
 						<td>
-							<div>
+							<div class="bgr-x">
 								<a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@item.ProductID">
 									Xóa
 								</a>
