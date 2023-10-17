@@ -69,7 +69,7 @@ namespace BNo_Face.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(Category category)
 		{
-<<<<<<< Updated upstream
+
 			if (ModelState.IsValid)
 			{
 				_db.Categories.Update(category);

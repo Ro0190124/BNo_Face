@@ -13,8 +13,6 @@ namespace BNo_Face.Model
 		[Key]
 		[Display(Name ="Mã Danh Mục")]
 		public int CategoryID { get; set; }
-		[RegularExpression(@"^[\p{L}0-9\s]+$",
-			ErrorMessage = "Tên danh mục không chứa ký tự đặc biệt")]
 		[Required(ErrorMessage = "Tên danh mục không được để trống.")]
 		[MaxLength(30, ErrorMessage = "Tên danh mục phải nhỏ hơn 30 ký tự")]
 		[MinLength(1, ErrorMessage = "Tên danh mục phải lớn hơn 1 ký tự")]

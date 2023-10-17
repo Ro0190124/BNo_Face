@@ -33,9 +33,11 @@ namespace BNo_Face.Model
 		public string NumberPhone { get; set; }
 		[MinLength(5, ErrorMessage ="Tên tài khoản phải lớn hơn 5 ký tự") ] 
 		[MaxLength(40, ErrorMessage = "Tên tài khoản phải nhỏ hơn 40 ký tự")]
+		[RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Tên tài khoản chỉ được chứa ký tự và số.")]
 		[Display(Name = "Tên Tài Khoản")]
 		[Required(ErrorMessage = "Tên tài khoản không được để trống.")]
 		public string UserName { get; set; }
+		[RegularExpression(@"^[a-zA-Z0-9]+$",ErrorMessage = "Mật khẩu chỉ được chứa ký tự và số.")]
 		[Required(ErrorMessage = "Mật khẩu không được để trống.")]
 		[MinLength(5, ErrorMessage = "Mật khẩu phải lớn hơn 5 ký tự")]
 		[MaxLength(30, ErrorMessage = "Mật khẩu phải nhỏ hơn 30 ký tự")]

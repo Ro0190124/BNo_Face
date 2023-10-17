@@ -15,12 +15,9 @@
 			</div>
 			<div class="mb-3">
 				<label asp-for="CategoryID" class="title_block"></label>
-				@*@Html.DropDownList("category", ViewBag.categoryList as SelectList, new { @class = "form-select" })*@
-				
-				<select asp-for="CategoryID" asp-items="ViewBag.categoryList" class="form-select">
-					@*<option disabled onselect="">--Chọn--</option>*@
+				<select asp-for="CategoryID" asp-items="ViewBag.categoryList" class="textbox">
 				</select>
-				
+
 				<span asp-validation-for="CategoryID" class="text-danger"></span>
 			</div>
 			<div class="mb-3">

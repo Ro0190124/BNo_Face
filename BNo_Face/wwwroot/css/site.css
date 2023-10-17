@@ -201,3 +201,9 @@ nav ul li {
 .test{
     display:flex;
 }
+/*hiện thị phàn Tên trang và thêm */
+.col-1 {
+    margin-bottom: 20px;
+    flex: 0 0 auto;
+    width:15%;
+}

@@ -33,28 +33,36 @@ namespace BNo_Face.Controllers
 			var user = _db.Users.FirstOrDefault(u => u.UserName == userName);
 			if (ModelState.IsValid)
 			{
-               
-                Response.Cookies.Append("userID", user.UserID.ToString());
-				Console.WriteLine(user.UserID);
-				if(user.Position == 3 )
+				if(user != null && user.Password == password)
 				{
-                    ViewData["StaffPosition"] = false;
+					Response.Cookies.Append("userID", user.UserID.ToString());
+					Console.WriteLine(user.UserID);
+					if (user.Position == 3)
+					{
+						ViewData["StaffPosition"] = false;
+					}
+					else if (user.Position == 2)
+					{
+						ViewData["ManagerPosition"] = true;
+					}
+					Console.WriteLine(ViewData["UserID"]);
+
+
+					// set cookies
+					return RedirectToAction("Index", "Product", new { id = user.UserID });
 				}
-                else if (user.Position == 2)
+				else
 				{
-                    ViewData["ManagerPosition"] = true;
-                }
-                Console.WriteLine(ViewData["UserID"]);
-				
-                
-                // set cookies
-               return RedirectToAction("Index", "Product", new { id = user.UserID});
+					ModelState.AddModelError("UserName", "Tên tài khoản hoặc mật khẩu không đúng");
+					return View();
+				}
+
 
             }
 			else
 			{
                 ModelState.AddModelError("UserName", "Tên tài khoản không tồn tại");
-                return View();
+				return View();
 			}
 			
 		}
