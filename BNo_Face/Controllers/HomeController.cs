@@ -1,6 +1,10 @@
 ﻿using BNo_Face.DataAccess.Data;
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace BNo_Face.Controllers
 {
@@ -25,8 +29,9 @@ namespace BNo_Face.Controllers
 		{
 			// dòng này đặt ở controller trang nào thì _layout sẽ ẩn đi ở trang đó
 			ViewData["HideHeader"] = true;
+
 			var user = _db.Users.FirstOrDefault(u => u.UserName == userName);
-			if (user != null && user.Password == password)
+			if (ModelState.IsValid)
 			{
                
                 Response.Cookies.Append("userID", user.UserID.ToString());

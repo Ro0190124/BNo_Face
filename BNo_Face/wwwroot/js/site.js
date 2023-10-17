@@ -3,14 +3,18 @@
 
 // Write your JavaScript code.
 //chỉnh nội dung trong bảng
-const tds = document.querySelectorAll('.table_user td');
+//const tds = document.querySelectorAll('.table_user td');
 
-tds.forEach(td => {
-    td.addEventListener('mouseover', () => {
-        td.classList.add('full-content');
-    });
+//tds.forEach(td => {
+//    td.addEventListener('mouseover', () => {
+//        td.classList.add('full-content');
+//    });
 
-    td.addEventListener('mouseout', () => {
-        td.classList.remove('full-content');
-    });
-});
+//    td.addEventListener('mouseout', () => {
+//        td.classList.remove('full-content');
+//    });
+//});
+
+function send() {
+     confirm('Bạn có muốn xóa không');
+}
