@@ -4,7 +4,7 @@
 	<div class="border p-3 Backgroud_US">
 		
 		<div class="row pb-2">
-			<h2>Hi</h2>
+			<h2>Nhân viên</h2>
 		</div>
 		<div class="mb-3">
 			<input type="hidden" asp-for="UserID" />
@@ -12,26 +12,21 @@
 		<!--<div asp-validation-summary="All" class="text-danger"></div>-->
 		<div class="mb-3">
 			<label asp-for="Name" class="title_block"></label>
-			<input asp-for="Name" class="textbox" /> <br />
+			<input asp-for="Name" class="textbox" /><br />
 			<span asp-validation-for="Name" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="NumberPhone" class="title_block"></label>
-			<input asp-for="NumberPhone" class="textbox" />
+			<input asp-for="NumberPhone" class="textbox" /><br />
 			<span asp-validation-for="NumberPhone" class="text-danger"></span>
 		</div>
 
 		<div class="mb-3">
 			<label asp-for="Birthday" class="title_block"></label>
-			<input asp-for="Birthday" class="textbox" />
+			<input asp-for="Birthday" class="textbox" /><br />
 			<span asp-validation-for="Birthday" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<!--
-			Regular space: &nbsp;
-			Two spaces gap: &ensp;
-			Four spaces gap: &emsp;
-						-->
 			<label asp-for="Sex" class="title_block"></label>&emsp;&emsp;
 			<input asp-for="Sex" type="radio" name="Sex" value="true" /> Nam &ensp;
 			<input asp-for="Sex" type="radio" name="Sex" value="false" /> Nữ
@@ -39,12 +34,12 @@
 		</div>
 		<div class="mb-3">
 			<label asp-for="UserName" class="title_block"></label>
-			<input asp-for="UserName" class="textbox" />
+			<input asp-for="UserName" class="textbox" /><br />
 			<span asp-validation-for="UserName" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
 			<label asp-for="Password" class="title_block"></label>
-			<input asp-for="Password" class="textbox" />
+			<input asp-for="Password" class="textbox" /><br />
 			<span asp-validation-for="Password" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
@@ -61,10 +56,3 @@
 		</div>
 	</div>
 </form>
-<script>
-	function confirmEdit() {
-		if (confirm("Bạn có muốn sửa không?")) {
-			document.querySelector('.SignIn').submit();
-		}
-	}
-</script>

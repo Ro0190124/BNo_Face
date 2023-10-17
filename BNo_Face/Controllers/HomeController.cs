@@ -1,6 +1,10 @@
 ﻿using BNo_Face.DataAccess.Data;
 using BNo_Face.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace BNo_Face.Controllers
 {
@@ -16,35 +20,54 @@ namespace BNo_Face.Controllers
             ViewData["HideHeader"] = true;
             return View();
 		}
+		
 		public IActionResult Loggin(string userName, string password)
 		{
 			// dòng này đặt ở controller trang nào thì _layout sẽ ẩn đi ở trang đó
 			ViewData["HideHeader"] = true;
-			var user = _db.Users.FirstOrDefault(u => u.UserName == userName);
-			if (user != null && user.Password == password)
-			{
-				// set cookies
-				Response.Cookies.Append("userID", user.UserID.ToString());
-				Console.WriteLine(user.UserID);
-				if(user.Position == 3 )
-				{
-                    ViewData["StaffPosition"] = true;
-				}
-                else if (user.Position == 2)
-				{
-                    ViewData["ManagerPosition"] = true;
-                }
-				
-				Console.WriteLine(ViewData["UserID"]);
-				return RedirectToAction("Index", "Product", new { id = user.UserID});
 
-            }
-			else
-			{ 
-				return View();
+			var user = _db.Users.FirstOrDefault(u => u.UserName == userName);
+			if (ModelState.IsValid)
+			{
+				if (user != null)
+				{
+					if (user.Password == password)
+					{
+						// set cookies
+						Response.Cookies.Append("userID", user.UserID.ToString());
+						Console.WriteLine(user.UserID);
+
+						if (user.Position == 3)
+						{
+							ViewData["StaffPosition"] = true;
+						}
+						else if (user.Position == 2)
+						{
+							ViewData["ManagerPosition"] = true;
+						}
+
+						Console.WriteLine(ViewData["UserID"]);
+						return RedirectToAction("Index", "User", new { id = user.UserID });
+					}
+					else
+					{
+						ModelState.AddModelError("Password", "Mật khẩu không chính xác.");
+					}
+				}
+				else
+				{
+					ModelState.AddModelError("UserName", "Tên đăng nhập không tồn tại.");
+				}
 			}
-			
+			return View();
+
 		}
+
+		//public IActionResult Loggin()
+		//{
+		//	ViewData["HideHeader"] = true;
+		//	return View();
+		//}
 		public IActionResult Home()
 		{
             ViewData["HideHeader"] = true;

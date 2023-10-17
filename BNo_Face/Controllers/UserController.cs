@@ -50,12 +50,11 @@ namespace BNo_Face.Controllers
 			{
 				ModelState.AddModelError("UserName", "Tên và mật khẩu không được trùng");
 			}
-
-			if(!Regex.IsMatch(user.Name, @"^[\p{L}\s]+$"))
+			if(user.Birthday.Date > DateTime.Now)
 			{
-				ModelState.AddModelError("Name", "Họ tên chỉ được chứa các ký tự chữ và khoảng trắng.");
+				ModelState.AddModelError("Birthday", "Ngày sinh phải nhỏ hơn ngày hiện tại");
 			}
-			
+
 
 			if (ModelState.IsValid)
 			{
@@ -63,7 +62,6 @@ namespace BNo_Face.Controllers
 				_db.Users.Add(user);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
-
 			}
 			
 			return View(user);
@@ -87,6 +85,14 @@ namespace BNo_Face.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(User user)
 		{
+			if (user.UserName == user.Password)
+			{
+				ModelState.AddModelError("UserName", "Tên và mật khẩu không được trùng");
+			}
+			if (user.Birthday.Date > DateTime.Now)
+			{
+				ModelState.AddModelError("Birthday", "Ngày sinh phải nhỏ hơn ngày hiện tại");
+			}
 			if (ModelState.IsValid)
 			{
 				Console.WriteLine("Edit user");

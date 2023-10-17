@@ -5,24 +5,29 @@
 <form method="post" asp-action="Create" class="SignIn">
 	<div class="border p-3 Backgroud_US">
 		<div class="row pb-2">
-			<h2>User</h2>
+			<h2>Thêm nhân viên</h2>
 		</div>
 		<!--<div asp-validation-summary="All" class="text-danger"></div>-->
 		<div class="mb-3">
-			<label asp-for="Name" class="title_block"></label>
-			<input asp-for="Name" class="textbox" /> <br />
+			<div class="test">
+                    <label asp-for="Name" class="title_block"></label>
+                    <input asp-for="Name" class="textbox" /> <br />
+			</div>
 			<span asp-validation-for="Name" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="NumberPhone" class="title_block"></label>
-			<input asp-for="NumberPhone" class="textbox" />
+			<div class="test">
+                    <label asp-for="NumberPhone" class="title_block"></label>
+					<input asp-for="NumberPhone" class="textbox"  />
+			</div>
 			<span asp-validation-for="NumberPhone" class="text-danger"></span>
 		</div>
-
 		<div class="mb-3">
-			<label asp-for="Birthday" class="title_block"></label>
-			<input asp-for="Birthday" class="textbox" />
-			<span asp-validation-for="Birthday" class="text-danger"></span>
+				<div class="test">
+                    <label asp-for="Birthday" class="title_block"></label>
+					<input asp-for="Birthday" class="textbox"/>
+				</div>
+			<span asp-validation-for="Birthday" class="text-danger" ></span>
 		</div>
 		<div class="mb-3">
 			<!--
@@ -36,13 +41,17 @@
 			<span asp-validation-for="Sex" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="UserName" class="title_block"></label>
-			<input asp-for="UserName" class="textbox" />
+				<div class="test">
+                    <label asp-for="UserName" class="title_block"></label>
+                    <input asp-for="UserName" class="textbox" />
+				</div>
 			<span asp-validation-for="UserName" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Password" class="title_block"></label>
-			<input asp-for="Password" class="textbox"/> 
+			<div class="test">
+                    <label asp-for="Password" class="title_block"></label>
+                    <input asp-for="Password" class="textbox" />
+                </div>
 			<span asp-validation-for="Password" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
@@ -61,3 +70,10 @@
 	</div>
 </form>
 </div>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		var birthdayInput = document.getElementById("birthdayInput");
+		var today = new Date().toISOString().split("T")[0];
+		birthdayInput.value = today;
+	});
+</script>
