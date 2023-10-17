@@ -17,8 +17,11 @@ namespace BNo_Face.Controllers
 		{
 			// get cookies
 			var cookie = Request.Cookies["userID"];
-			// check cookie
-			if (cookie == null)
+            Console.WriteLine(cookie);
+           
+            
+            // check cookie
+            if (cookie == null)
 			{
 				return RedirectToAction("Index", "Home");
 			}

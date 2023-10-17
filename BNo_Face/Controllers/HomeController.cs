@@ -16,32 +16,40 @@ namespace BNo_Face.Controllers
             ViewData["HideHeader"] = true;
             return View();
 		}
-		public IActionResult Loggin(string userName, string password)
+        public IActionResult Loggin(){
+            ViewData["HideHeader"] = true;
+            return View();
+        }
+		[HttpPost]
+        public IActionResult Loggin(string userName, string password)
 		{
 			// dòng này đặt ở controller trang nào thì _layout sẽ ẩn đi ở trang đó
 			ViewData["HideHeader"] = true;
 			var user = _db.Users.FirstOrDefault(u => u.UserName == userName);
 			if (user != null && user.Password == password)
 			{
-				// set cookies
-				Response.Cookies.Append("userID", user.UserID.ToString());
+               
+                Response.Cookies.Append("userID", user.UserID.ToString());
 				Console.WriteLine(user.UserID);
 				if(user.Position == 3 )
 				{
-                    ViewData["StaffPosition"] = true;
+                    ViewData["StaffPosition"] = false;
 				}
                 else if (user.Position == 2)
 				{
                     ViewData["ManagerPosition"] = true;
                 }
+                Console.WriteLine(ViewData["UserID"]);
 				
-				Console.WriteLine(ViewData["UserID"]);
-				return RedirectToAction("Index", "Product", new { id = user.UserID});
+                
+                // set cookies
+               return RedirectToAction("Index", "Product", new { id = user.UserID});
 
             }
 			else
-			{ 
-				return View();
+			{
+                ModelState.AddModelError("UserName", "Tên tài khoản không tồn tại");
+                return View();
 			}
 			
 		}
