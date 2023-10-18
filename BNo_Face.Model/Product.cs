@@ -51,7 +51,7 @@ namespace BNo_Face.Model
 		public int Price { get; set; }
 
         [Display(Name = "Ghi Chú")]
-        [MaxLength(80)]
+        [MaxLength(80)] 
 		[Required(AllowEmptyStrings = true)]
 		public string Note { get; set; } 
 

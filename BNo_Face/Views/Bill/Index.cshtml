@@ -1,50 +1,18 @@
-﻿@model IEnumerable<Bill>
-<div class="container">
-	<div class="row pt-4">
-		<div class="col-1">
-			<h2> Danh Mục </h2>
+﻿@model Bill
+<h1> Thanh Toán</h1>
+<form method="post" asp-action="Index">
+    <div class="container">
+		<div class="mb-3">
+			<div class="test">
+			<label asp-for="ProductID" class="title_block"></label>
+			<select asp-for="ProductID" asp-items="ViewBag.productList" class="textbox">
+			</select>
+			</div>
+			<span asp-validation-for="ProductID" class="text-danger"></span>
 		</div>
-		<div class="col-1">
-
-			<a asp-controller="Bill" asp-action="Create" class="btn btn-primary">Thêm Hóa Đơn</a>
-		</div>
+<!--	<div class="mb-3">
+			<label asp-for="List_Product.Quantity"></label>
+			<input type="number" class="form-control" />
+				</div>-->
 	</div>
-	@using (Html.BeginForm())
-
-	{
-
-		<p>
-
-			Nhập thông tin: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
-
-		</p>
-
-	}
-
-	<table class="table_user">
-		<thead>
-			<tr>
-				<th> ID</th>
-				<th> Ngày tạo</th>
-				<th> Xóa</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var item in Model)
-			{
-				<tr>
-					<td>@item.BillID</td>
-					<td>@item.DateOfBill</td>
-					<td>
-						<div>
-							<a class="btn btn-danger" asp-controller="Bill" asp-action="Delete" asp-route-id="@item.BillID">
-								Xóa
-							</a>
-
-						</div>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-</div>
+</form>
