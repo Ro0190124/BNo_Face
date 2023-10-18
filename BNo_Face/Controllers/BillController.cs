@@ -14,6 +14,7 @@ namespace BNo_Face.Controllers
 		{
 			_db = db;
 		}
+
 		public void LoadProduct()
 		{
 			IEnumerable<SelectListItem> productList = _db.Products.Select(
@@ -26,10 +27,19 @@ namespace BNo_Face.Controllers
 			ViewBag.ProductList = productList;
 		
 		}
-		public IActionResult Index(string searchString)
+
+		public IActionResult Index()
 		{
-			// get cookies
-			var cookie = Request.Cookies["userID"];
+            LoadProduct();
+            return View();
+		}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(string searchString)
+		{
+            //LoadProduct();
+            // get cookies
+            var cookie = Request.Cookies["userID"];
 			// check cookie
 			if (cookie == null)
 			{
