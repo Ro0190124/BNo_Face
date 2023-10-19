@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BNo_Face.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231016114003_AddTable")]
-    partial class AddTable
+    [Migration("20231019101125_AddTableToDb")]
+    partial class AddTableToDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,9 +36,6 @@ namespace BNo_Face.DataAccess.Migrations
                     b.Property<DateTime>("DateOfBill")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
                     b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
@@ -46,8 +43,6 @@ namespace BNo_Face.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("BillID");
-
-                    b.HasIndex("ProductID");
 
                     b.HasIndex("UserID");
 
@@ -114,9 +109,8 @@ namespace BNo_Face.DataAccess.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
-                    b.Property<string>("Price")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
@@ -188,19 +182,11 @@ namespace BNo_Face.DataAccess.Migrations
 
             modelBuilder.Entity("BNo_Face.Model.Bill", b =>
                 {
-                    b.HasOne("BNo_Face.Model.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BNo_Face.Model.User", "User")
                         .WithMany()
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Product");
 
                     b.Navigation("User");
                 });

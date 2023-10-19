@@ -16,9 +16,6 @@ namespace BNo_Face.Model
 		public int UserID { get; set; }
 		[ForeignKey("UserID")]
 		public User User { get; set; }
-		public int ProductID { get; set; }
-		[ForeignKey("ProductID")]
-		public Product Product { get; set; }
 		[Required]
 		public int TotalPrice { get; set; }
 		public DateTime DateOfBill { get; private set; } = DateTime.Now;

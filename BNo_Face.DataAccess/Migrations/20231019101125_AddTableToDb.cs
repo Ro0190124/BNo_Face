@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BNo_Face.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTable : Migration
+    public partial class AddTableToDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,19 +78,12 @@ namespace BNo_Face.DataAccess.Migrations
                     BillID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(type: "int", nullable: false),
-                    ProductID = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<int>(type: "int", nullable: false),
                     DateOfBill = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Bills", x => x.BillID);
-                    table.ForeignKey(
-                        name: "FK_Bills_Products_ProductID",
-                        column: x => x.ProductID,
-                        principalTable: "Products",
-                        principalColumn: "ProductID",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Bills_Users_UserID",
                         column: x => x.UserID,
@@ -121,11 +114,6 @@ namespace BNo_Face.DataAccess.Migrations
                         principalTable: "Products",
                         principalColumn: "ProductID");
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Bills_ProductID",
-                table: "Bills",
-                column: "ProductID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bills_UserID",
