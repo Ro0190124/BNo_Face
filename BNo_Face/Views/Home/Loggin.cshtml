@@ -1,29 +1,33 @@
 ﻿@model User
-<form method="post"asp-action="Loggin" >
-	<div class="Home_Loggin">
-		<h2>Đăng nhập</h2>
-		<div class="mb-3">
-			<div class="test">
-                <label asp-for="UserName" class="title_block"></label>
-                <input asp-for="UserName" class="textbox" />
-			</div>
+<form method="post" asp-action="Login">
 
-			<span asp-validation-for="UserName" class="text-danger"></span>
-		</div>
+    <div class="container">
+        <div class="login-box">
+            <h2>Đăng nhập</h2>
+            <ng-form action="#">
+            <div class="input-box">                 
+                    <input asp-for="UserName" required />
+                    <label asp-for="UserName"></label>
 
-		<div class="mb-3">
-			<div class="test">
-                <label asp-for="Password" class="title_block"></label>
-                <input asp-for="Password" type="password" class="textbox" />
-			</div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
 
-			<span asp-validation-for="Password" class="text-danger"></span>
-		</div>
-		<div class="Home_Button bgr-bt">
-			<button type="submit" class="btn btn-primary" onclick="showErrorMessages()">Đăng nhập</button>
-			<button class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</button>
+            <div class="input-box">
+                    <input asp-for="Password" type="password" required />
+                    <label asp-for="Password"></label>
 
-		</div>
-	</div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="Home_Button bgr-bt">
+                <button type="submit" class="btn btn-primary" onclick="showErrorMessages()">Đăng nhập</button>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</a>
+            </div>
+            </ng-form>
+        </div>
+        @for (int i = 0; i < 50; i++)
+        {
+            <span style="--i:@i;"></span>
+        }
+    </div>
 
 </form>
