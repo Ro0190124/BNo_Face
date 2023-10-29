@@ -4,55 +4,53 @@
 			<div class="row pb-2">
 				<h2> Đăng Ký</h2>
 			</div>
-		<ng-form action="#">
-			<div class="input-box">
-				<input asp-for="Name" required />
-				<label asp-for="Name"></label>
-
+			<!--<div asp-validation-summary="All" class="text-danger"></div>-->
+			<div class="mb-3">
+				<label asp-for="Name" class="title_block"></label>
+				<input asp-for="Name" class="textbox" /> <br />
 				<span asp-validation-for="Name" class="text-danger"></span>
 			</div>
-			<div class="input-box">
-				<input asp-for="NumberPhone" required  />
-				<label asp-for="NumberPhone"></label>
-				
+			<div class="mb-3">
+				<label asp-for="NumberPhone" class="title_block"></label>
+				<input asp-for="NumberPhone" class="textbox" /></br>
 				<span asp-validation-for="NumberPhone" class="text-danger"></span>
 			</div>
-			<div class="input-box">
-				<input asp-for="Birthday" required />
-				<label asp-for="Birthday"></label>
-				
+			<div class="mb-3">
+				<label asp-for="Birthday" class="title_block"></label>
+			<input asp-for="Birthday" class="textbox" /></br>
 				<span asp-validation-for="Birthday" class="text-danger"></span>
 			</div>
-			<div class="input-box">
-				<input type="radio" name="Sex" value="true" checked="checked" required /> Nam &ensp;
-				<input type="radio" name="Sex" value="false" required /> Nữ;
-				<label asp-for="Sex"></label>&emsp;&emsp;
-			
+			<div class="mb-3">
+				<!--\
+					tétRegular space: &nbsp;
+				Two spaces gap: &ensp;
+				Four spaces gap: &emsp;
+							-->
+				<label asp-for="Sex" class="title_block"></label>&emsp;&emsp;
+			<input type="radio" name="Sex" value="true" checked="checked" /> Nam &ensp;
+			<input type="radio" name="Sex" value="false" /> Nữ</br>
 				<span asp-validation-for="Sex" class="text-danger"></span>
 			</div>
-			<div class="input-box">
-				<input asp-for="UserName" required />
-				<label asp-for="UserName"></label>
-			
+			<div class="mb-3">
+				<label asp-for="UserName" class="title_block"></label>
+			<input asp-for="UserName" class="textbox" /></br>
 				<span asp-validation-for="UserName" class="text-danger"></span>
 			</div>
-			<div class="input-box">
-				<input asp-for="Password" required/>
-				<label asp-for="Password"></label>
-			
+			<div class="mb-3">
+				<label asp-for="Password" class="title_block"></label>
+			<input asp-for="Password" class="textbox" /></br>
 				<span asp-validation-for="Password" class="text-danger"></span>
 			</div>
-			<div class="input-box">
+			<div class="mb-3">
 				<label asp-for="Position" class="title_block"></label>
 				<input type="radio" name="Position" value="1" /> Admin &ensp;
 				<input type="radio" name="Position" value="2" /> Kế Toán &ensp;
 			<input type="radio" name="Position" value="3" checked="checked" /> Nhân Viên &ensp;
 				<span asp-validation-for="Position" class="text-danger"></span>
 			</div>
-			<div class="Home_Button bgr-bt">
-				<button type="submit" class="btn btn-primary">Đăng Ký</button>
-				<button class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</button>
-			</div>
-		</ng-form>
-	</div>
+		<div class="Home_Button bgr-bt">
+			<button type="submit" class="btn btn-primary">Đăng Ký</button>
+			<button class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</button>
+		</div>
+		</div>
 	</form>
