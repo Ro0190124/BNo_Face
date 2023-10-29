@@ -22,8 +22,9 @@ body {
     /*    background-color:#858585;*/
 }
 header {
-    background-color: grey;
-    flex: 1; 
+/*    background-color: grey;
+    flex: 1; */
+    flex: none; 
 }
 nav {
     width: 300px;
@@ -304,4 +305,13 @@ h2 {
     margin-bottom: 20px;
     flex: 0 0 auto;
     width:15%;
+}
+
+.Fx-1{
+    width:60%;
+    margin:0 auto;
+}
+.Fx {
+    display: flex;
+    justify-content: center;
 }

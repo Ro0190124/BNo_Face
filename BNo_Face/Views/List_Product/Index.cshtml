@@ -1,0 +1,73 @@
+﻿@model IEnumerable<List_Product>
+
+<div class="container">
+	<div class="row pt-4">
+		<div class="col-1">
+			<h2> Hóa Đơn</h2>
+		</div>
+		<div class="col-1 bgr-a">
+
+			<a asp-controller="List_Product" asp-action="Create" class="btn btn-primary">Thêm Sản Phẩm</a>
+			<br />
+		</div>
+		<div class="Tb-Container">
+			<table class="table_user responsive-table">
+				<thead>
+					<tr>
+						<th>Tên sản phẩm</th>
+						<th>Số lượng</th>
+						<th>Giá</th>
+						<th>Thành tiền</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if(Model != null)
+					{
+						@foreach (var i in Model)
+						{
+							var ThanhTien = i.Quantity * i.Product.Price;
+							decimal total = 0;
+							total += ThanhTien;
+							<tr>
+								<td>@i.Product.ProductName</td>
+								<td>@i.Quantity</td>
+								<td>@i.Product.Price</td>
+								<td>@(ThanhTien.ToString("n0"))</td>
+								<td>
+									<div class="bgr-a">
+										<a class="btn btn-primary" asp-controller="List_Product" asp-action="Edit" asp-route-id="@i.ProductID">
+											Sửa
+										</a>
+									</div>
+								</td>
+								<td>
+									<div class="bgr-x">
+										<a class="btn btn-danger" asp-controller="List_Product" asp-action="Delete" asp-route-id="@i.ProductID">
+											Xóa
+										</a>
+
+									</div>
+								</td>
+							</tr>
+						}
+
+					}
+					else
+					{
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="bgr-bt">
+        <button type="submit" class="btn btn-primary">Thanh toán</button>
+	</div>
+
+</div>

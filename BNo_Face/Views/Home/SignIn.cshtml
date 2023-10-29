@@ -18,17 +18,20 @@
 				<span asp-validation-for="NumberPhone" class="text-danger"></span>
 			</div>
 			<div class="input-box">
-				<input asp-for="Birthday" required />
-				<label asp-for="Birthday"></label>
-				
+				<input asp-for="Birthday" required type="date" />
+				<label asp-for="Birthday"></label>				
 				<span asp-validation-for="Birthday" class="text-danger"></span>
 			</div>
 			<div class="input-box">
-				<input type="radio" name="Sex" value="true" checked="checked" required /> Nam &ensp;
-				<input type="radio" name="Sex" value="false" required /> Nữ;
-				<label asp-for="Sex"></label>&emsp;&emsp;
-			
-				<span asp-validation-for="Sex" class="text-danger"></span>
+				<div class="Fx-1">
+					<div class="Fx">
+						<label asp-for="Sex" class="title_block"></label>
+						<input type="radio" name="Sex" value="true" checked="checked" required /> Nam &ensp;
+						<input type="radio" name="Sex" value="false" required /> Nữ;
+@*						<label asp-for="Sex"></label>&emsp;&emsp;*@
+						<span asp-validation-for="Sex" class="text-danger"></span>
+					</div>
+				</div>
 			</div>
 			<div class="input-box">
 				<input asp-for="UserName" required />
@@ -43,15 +46,20 @@
 				<span asp-validation-for="Password" class="text-danger"></span>
 			</div>
 			<div class="input-box">
-				<label asp-for="Position" class="title_block"></label>
-				<input type="radio" name="Position" value="1" /> Admin &ensp;
-				<input type="radio" name="Position" value="2" /> Kế Toán &ensp;
-			<input type="radio" name="Position" value="3" checked="checked" /> Nhân Viên &ensp;
-				<span asp-validation-for="Position" class="text-danger"></span>
+				<div class="Fx-1">
+					<div class="Fx">
+						<label asp-for="Position" class="title_block"></label>
+						<input type="radio" name="Position" value="1" /> Admin &ensp;
+						<input type="radio" name="Position" value="2" /> Kế Toán &ensp;
+						<input type="radio" name="Position" value="3" checked="checked" /> Nhân Viên &ensp;
+						<span asp-validation-for="Position" class="text-danger"></span>
+
+					</div>
+				</div>
 			</div>
-			<div class="Home_Button bgr-bt">
+			<div class="Home_Button bgr-bt bgr-a">
 				<button type="submit" class="btn btn-primary">Đăng Ký</button>
-				<button class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</button>
+				<a class="btn btn-primary" asp-controller="Home" asp-action="Index">Thoát</a>
 			</div>
 		</ng-form>
 	</div>

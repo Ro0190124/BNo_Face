@@ -1,0 +1,44 @@
+﻿@model List_Product
+
+<h1> Thanh Toán</h1>
+<form method="post" asp-action="Index">
+	<div class="container">
+<!--	<div class="mb-3">
+			<div class="test">
+				<label asp-for="Product.Category.CategoryID" class="title_block"></label>
+				<select asp-for="Product.Category.CategoryID" asp-items="ViewBag.Category" class="textbox">
+				</select>
+			</div>
+			<span asp-validation-for="Product.Category.CategoryID" class="text-danger"></span>
+				</div>-->
+		<div class="mb-3">
+			<div class="test">
+				<label asp-for="Product.ProductName" class="title_block"></label>
+				<select asp-for="ProductID" asp-items="ViewBag.Product" class="textbox">
+				</select>
+			</div>
+			<span asp-validation-for="ProductID" class="text-danger"></span>
+		</div>
+	<!--<div class="mb-3">
+			<div class="test">
+			<label asp-for="Product.Price" class="title_block"></label>
+			<input asp-for="Product.Price" class="textbox" /> <br />
+			<input asp-for="Product.Price" type="hidden" />
+			<span class="textbox BorderShow">Model.Product.Price</span>
+			</div>
+			<span asp-validation-for="Product.Price" class="text-danger"></span>
+			</div>-->
+		<div class="mb-3">
+			<div class="test">
+				<label asp-for="Quantity" class="title_block"></label>
+				<input type="number" class="form-control textbox" />
+			</div>
+			<span asp-validation-for="Quantity" class="text-danger"></span>
+		</div>
+
+		<div class="bgr-bt">
+			<button type="submit" class="btn btn-primary">Thêm</button>
+			<button class="btn btn-primary" asp-controller="List_Product" asp-action="Index">Trở về</button>
+		</div>
+	</div>
+</form>
