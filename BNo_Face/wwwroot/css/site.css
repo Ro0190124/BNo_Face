@@ -19,6 +19,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background: #1f293a;
+    color:white;
     /*    background-color:#858585;*/
 }
 header {
@@ -45,6 +46,7 @@ nav ul li {
     border-radius: 5px;
     text-align:center
 }
+
 .SignIn {
     width: 700px;
     margin: 0 auto;
@@ -68,7 +70,7 @@ nav ul li {
 .title_block {
     width: 250px;
     height: 70px;
-    color: #000;
+    color: white;
     font-size: 26px;
     font-style: normal;
     font-weight: 400;
@@ -312,6 +314,11 @@ h2 {
     margin:0 auto;
 }
 .Fx {
+    width:100%;
     display: flex;
     justify-content: center;
+    color:white;
+}
+.table_user thead th{
+    color:black;
 }

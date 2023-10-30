@@ -81,7 +81,19 @@ namespace BNo_Face.Controllers
 		public IActionResult SignIn(User user)
 		{
             ViewData["HideHeader"] = true;
-            if (user.UserName == user.Password)
+			if(user.Password != @"^[a-zA-Z0-9]+$")
+			{
+				ModelState.AddModelError("Password", "Mật khẩu không được chứa ký tự có dấu");
+			}
+			if (user.UserName == user.Password)
+			{
+				ModelState.AddModelError("UserName", "Tên và mật khẩu không được trùng");
+			}
+			if (user.Birthday.Date > DateTime.Now)
+			{
+				ModelState.AddModelError("Birthday", "Ngày sinh phải nhỏ hơn ngày hiện tại");
+			}
+			if (user.UserName == user.Password)
 			{
 				ModelState.AddModelError("UserName", "Tên và mật khẩu không được trùng");
 			}
